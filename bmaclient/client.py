@@ -11,7 +11,7 @@ class MonitoringAPI(object):
     def __init__(self, *args, **kwargs):
         pass
 
-    def get_fetch_method(name):
+    def get_fetch_method(self, name):
         method_name = 'fetch_{}'.format(name)
         return getattr(self, method_name)
 
@@ -25,6 +25,10 @@ class MonitoringAPI(object):
         path='/edm/',
         required_parameters=[
             'benchmark', 'reflector', 'ci', 'start_at', 'end_at'])
+
+    fetch_gps_position = bind_method(
+        path='/gps/position/{station}',
+        accepts_parameters=['station'])
 
     fetch_gps_baseline = bind_method(
         path='/gps/baseline',
@@ -53,6 +57,8 @@ class MonitoringAPI(object):
         accepts_parameters=['station'])
 
     fetch_seismicity = bind_method(path='/seismicity')
+
+    fetch_bulletin = bind_method(path='/bulletin')
 
     fetch_energy = bind_method(path='/energy')
 
