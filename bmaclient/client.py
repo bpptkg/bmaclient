@@ -34,6 +34,10 @@ class MonitoringAPI(object):
         path='/rsam/seismic/{station}/{band}',
         accepts_parameters=['station', 'band'])
 
+    fetch_rsam_infrasound = bind_method(
+        path='/rsam/infrasound/{station}/{band}',
+        accepts_parameters=['station', 'band'])
+
     fetch_thermal = bind_method(path='/thermal')
 
     fetch_tiltmeter = bind_method(
