@@ -20,7 +20,7 @@ class MonitoringAPI(object):
     def get_fetch_method(self, name):
         """Get class fetch method based-on keyword name."""
         method_name = 'fetch_{}'.format(name)
-        return getattr(self, method_name)
+        return getattr(self, method_name, None)
 
     fetch_doas = bind_method(path='/doas')
 
