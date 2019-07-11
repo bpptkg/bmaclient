@@ -21,10 +21,7 @@ class MonitoringAPI(object):
 
     fetch_gas_temperature = bind_method(path='/gas/temperature')
 
-    fetch_edm = bind_method(
-        path='/edm/',
-        required_parameters=[
-            'benchmark', 'reflector', 'ci', 'start_at', 'end_at'])
+    fetch_edm = bind_method(path='/edm/')
 
     fetch_gps_position = bind_method(
         path='/gps/position/{station}',
