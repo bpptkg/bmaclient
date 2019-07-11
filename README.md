@@ -15,11 +15,11 @@ or clone via `https`:
 
 Checkout to the latest stable tag:
 
-    git fetch --all --tags --prune
-    git checkout tags/v<major>.<minor>.<patch> -b master
+    git fetch --tags
+    git checkout tags/v<major>.<minor>.<patch>
 
     # Example
-    git checkout tags/v0.0.1 -b master
+    git checkout tags/v0.0.1
 
 Make Python virtual environment and activate the virtual environment:
 
