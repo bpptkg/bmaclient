@@ -2,7 +2,7 @@
 
 import os
 
-from setuptools import setup
+from distutils.core import setup
 from bmaclient.version import get_version
 
 
@@ -20,6 +20,7 @@ setup(
     author_email='indrarudianto.official@gmail.com',
     url='http://gitlab.com/bpptkg/bmaclient',
     zip_safe=True,
+    packages=['bmaclient'],
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Environment :: Console',
