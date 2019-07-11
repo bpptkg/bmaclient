@@ -19,6 +19,7 @@ setup(
     author='Indra Rudianto',
     author_email='indrarudianto.official@gmail.com',
     url='http://gitlab.com/bpptkg/bmaclient',
+    zip_safe=True,
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Environment :: Console',
