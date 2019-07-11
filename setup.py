@@ -3,6 +3,7 @@
 import os
 
 from setuptools import setup
+from bmaclient.version import get_version
 
 
 def read(filename):
@@ -10,7 +11,7 @@ def read(filename):
 
 setup(
     name='bmaclient',
-    version='0.0.1',
+    version=get_version(),
     description='BPPTKG Monitoring API Client',
     long_description=read('README.md'),
     license='MIT',
