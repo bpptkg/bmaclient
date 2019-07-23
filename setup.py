@@ -18,7 +18,7 @@ setup(
     install_requires=['httplib2', 'six'],
     author='Indra Rudianto',
     author_email='indrarudianto.official@gmail.com',
-    url='http://gitlab.com/bpptkg/bmaclient',
+    url='https://gitlab.com/bpptkg/bmaclient',
     zip_safe=True,
     packages=['bmaclient'],
     classifiers=[
