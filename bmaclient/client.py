@@ -6,7 +6,7 @@ SUPPORTED_FORMATS = ['json']
 class MonitoringAPI(object):
 
     host = '192.168.5.10'
-    base_path = '/api/v1'
+    base_path = 'api/v1/'
     protocol = 'http'
     api_name = 'BPPTKG Monitoring API'
 
@@ -16,64 +16,90 @@ class MonitoringAPI(object):
             self.format = response_format
         else:
             raise Exception('Unsupported format')
+        self.api_key = kwargs.get('api_key')
+        self.access_token = kwargs.get('access_token')
 
     def get_fetch_method(self, name):
         """Get class fetch method based-on keyword name."""
         method_name = 'fetch_{}'.format(name)
         return getattr(self, method_name, None)
 
-    fetch_doas = bind_method(path='/doas')
+    fetch_doas = bind_method(path='doas/')
 
-    fetch_gas_emission = bind_method(path='/gas/emission')
+    fetch_gas_emission = bind_method(path='gas/emission/')
 
-    fetch_gas_temperature = bind_method(path='/gas/temperature')
+    fetch_gas_temperature = bind_method(path='gas/temperature/')
 
     fetch_edm = bind_method(
-        path='/edm/',
+        path='edm/',
         required_parameters=['benchmark', 'reflector'])
 
     fetch_gps_position = bind_method(
-        path='/gps/position/{station}',
+        path='gps/position/{station}/',
         accepts_parameters=['station'])
 
     fetch_gps_baseline = bind_method(
-        path='/gps/baseline',
+        path='gps/baseline/',
         required_parameters=['station1', 'station2'])
 
     fetch_rsam_seismic = bind_method(
-        path='/rsam/seismic/{station}',
+        path='rsam/seismic/{station}/',
         accepts_parameters=['station'])
 
     fetch_rsam_seismic_band = bind_method(
-        path='/rsam/seismic/{station}/{band}',
+        path='rsam/seismic/{station}/{band}/',
         accepts_parameters=['station', 'band'])
 
     fetch_rsam_infrasound = bind_method(
-        path='/rsam/infrasound/{station}',
+        path='rsam/infrasound/{station}/',
         accepts_parameters=['station'])
 
     fetch_rsam_infrasound_band = bind_method(
-        path='/rsam/infrasound/{station}/{band}',
+        path='rsam/infrasound/{station}/{band}/',
         accepts_parameters=['station', 'band'])
 
-    fetch_thermal = bind_method(path='/thermal')
+    fetch_thermal = bind_method(path='thermal/')
 
     fetch_tiltmeter = bind_method(
-        path='/tiltmeter/{station}',
+        path='tiltmeter/{station}/',
         accepts_parameters=['station'])
 
     fetch_tiltmeter_raw = bind_method(
-        path='/tiltmeter/raw/{station}',
+        path='tiltmeter/raw/{station}/',
         accepts_parameters=['station'])
 
     fetch_tiltborehole = bind_method(
-        path='/tiltborehole/{station}',
+        path='tiltborehole/{station}/',
         accepts_parameters=['station'])
 
-    fetch_seismicity = bind_method(path='/seismicity')
+    fetch_seismicity = bind_method(path='seismicity/')
 
-    fetch_bulletin = bind_method(path='/bulletin')
+    fetch_bulletin = bind_method(path='bulletin/')
 
-    fetch_energy = bind_method(path='/energy')
+    fetch_energy = bind_method(path='energy/')
 
-    fetch_magnitude = bind_method(path='/magnitude')
+    fetch_magnitude = bind_method(path='magnitude/')
+
+    fetch_slope = bind_method(path='slope/')
+
+    slope = bind_method(path='slope/{pk}/',
+                        accepts_parameters=['pk'])
+
+    create_slope = bind_method(path='slope/', method='POST')
+
+    replace_slope = bind_method(
+        path='slope/{pk}/', method='PUT', accepts_parameters=['pk'])
+
+    update_slope = bind_method(
+        path='slope/{pk}/', method='PATCH', accepts_parameters=['pk'])
+
+    delete_slope = bind_method(
+        path='slope/{pk}/', method='DELETE', accepts_parameters=['pk'])
+
+    search_slope = bind_method(path='slope/', required_parameters=['search'])
+
+    fetch_users = bind_method(path='users/')
+
+    user = bind_method(path='users/{pk}/', accepts_parameters=['pk'])
+
+    search_users = bind_method(path='users/', required_parameters=['search'])

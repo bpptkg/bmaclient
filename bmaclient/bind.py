@@ -3,9 +3,9 @@ import six
 import json
 from six.moves.urllib.parse import quote
 
-from .request import PlainRequest
+from .request import Request
 
-re_path_template = re.compile('{\w+}')
+re_path_template = re.compile(r'{\w+}')
 
 
 def encode_string(value):
@@ -22,7 +22,8 @@ class APIClientError(Exception):
 
 class APIError(Exception):
 
-    def __init__(self, status_code, error_type, error_message, *args, **kwargs):
+    def __init__(self, status_code, error_type, error_message,
+                 *args, **kwargs):
         self.status_code = status_code
         self.error_type = error_type
         self.error_message = error_message
@@ -68,7 +69,8 @@ def bind_method(**config):
                     value = quote(self.parameters[name])
                 except KeyError:
                     raise Exception(
-                        'No parameter value found for path variable: {}'.format(name))
+                        'No parameter value found '
+                        'for path variable: {}'.format(name))
                 del self.parameters[name]
 
                 self.path = self.path.replace(variable, value)
@@ -84,7 +86,7 @@ def bind_method(**config):
 
         def _do_api_request(self, url, method='GET', body=None, headers=None):
             headers = headers or {}
-            response, content = PlainRequest(self.api).make_request(
+            response, content = Request(self.api).make_request(
                 url, method=method, body=body, headers=headers)
 
             if response['status'] == '400':
@@ -92,13 +94,30 @@ def bind_method(**config):
                     response['status'],
                     'HTTP_BAD_REQUEST',
                     content)
-
-            try:
-                content_obj = json.loads(content.decode('utf-8'))
-            except ValueError:
-                raise APIClientError(
-                    "Unable to parse response, not valid JSON.",
-                    status_code=response['status'])
+            elif response['status'] == '403':
+                raise APIError(
+                    response['status'],
+                    'HTTP_PERMISSION_DENIED',
+                    content)
+            elif response['status'] == '404':
+                raise APIError(
+                    response['status'],
+                    'HTTP_NOT_FOUND',
+                    content)
+            elif response['status'] == '500':
+                raise APIError(
+                    response['status'],
+                    'HTTP_SERVER_ERROR',
+                    content)
+            if content:
+                try:
+                    content_obj = json.loads(content.decode('utf-8'))
+                except ValueError:
+                    raise APIClientError(
+                        "Unable to parse response, not valid JSON",
+                        status_code=response['status'])
+            else:
+                content_obj = None
 
             if response['status'] == '200':
                 if self.paginates:
@@ -107,14 +126,20 @@ def bind_method(**config):
                     previous_url = content_obj['links']['previous']
                     return results, next_url, previous_url
                 return content_obj, None, None
+            elif response['status'] == '201':
+                return content_obj, None, None
+            elif response['status'] == '204':
+                return content_obj, None, None
             else:
                 raise APIError(response['status'],
                                'HTTP_SERVICE_UNAVAILABLE',
                                content)
 
         def execute(self):
-            url, method, body, headers = PlainRequest(self.api).prepare_request(
+            url, method, body, headers = Request(
+                self.api).prepare_request(
                 self.method, self.path, self.parameters)
+
             content, next_url, previous_url = self._do_api_request(
                 url, method, body, headers)
             if self.paginates:
