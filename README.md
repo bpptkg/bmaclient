@@ -45,18 +45,31 @@ Install the package:
 
 ## Making Requests
 
-For the current BMA API version, the request doesn't require authentication.
-The request method is pretty straightforward:
+You must set valid API key or OAuth2 access token to make authenticated
+request. For example, using API key:
 
 ```python
 from bmaclient import MonitoringAPI
 
-api = MonitoringAPI()
+api = MonitoringAPI(api_key='API_KEY')
 json = api.fetch_bulletin()
 print(json)
 ```
 
-You can also apply field lookup filtering by passing keyword arguments:
+Or using access token:
+
+```python
+from bmaclient import MonitoringAPI
+
+api = MonitoringAPI(access_token='ACCESS_TOKEN')
+json = api.fetch_bulletin()
+print(json)
+```
+
+Using API key is only suitable for read only request. If you want to modify
+server resource, It's **recommended** to use OAuth2 access token.
+
+You can apply field lookup filtering by passing keyword arguments:
 
 ```python
 json = api.fetch_bulletin(eventdate__gte='2019-07-01',
@@ -99,6 +112,8 @@ The following URL paths are relative to the base API URL
 | Seismic Bulletin       | `/bulletin/`                         | `fetch_bulletin`             |
 | Seismic Energy         | `/energy/`                           | `fetch_energy`               |
 | Seismic Magnitude      | `/magnitude/`                        | `fetch_magnitude`            |
+| EDM Slope Correction   | `/slope/`                            | `fetch_slope`                |
+| User Profile Info      | `/users`                             | `fetch_users`                |
 
 
 For more information about BMA API, see [the BMA API documentation](http://192.168.5.10/docs/).

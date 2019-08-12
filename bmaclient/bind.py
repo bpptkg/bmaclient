@@ -4,13 +4,9 @@ import json
 from six.moves.urllib.parse import quote
 
 from .request import Request
+from .utils import encode_string
 
 re_path_template = re.compile(r'{\w+}')
-
-
-def encode_string(value):
-    return value.encode('utf-8') \
-        if isinstance(value, six.text_type) else str(value)
 
 
 class APIClientError(Exception):

@@ -1,5 +1,12 @@
 import os
+import six
+
 from .models import DataModel
+
+
+def encode_string(value):
+    return value.encode('utf-8') \
+        if isinstance(value, six.text_type) else str(value)
 
 
 def object_from_list(entry):
@@ -17,9 +24,19 @@ def get_api_key():
 
 
 def get_access_token():
-	"""Read OAuth2 access token from OS environment variables."""
-	ACCESS_TOKEN = os.environ.get('ACCESS_TOKEN')
-	if ACCESS_TOKEN is None:
-		raise AssertionError(
-			'Could not get ACCESS_TOKEN from OS environment variables')
-	return ACCESS_TOKEN
+    """Read OAuth2 access token from OS environment variables."""
+    ACCESS_TOKEN = os.environ.get('ACCESS_TOKEN')
+    if ACCESS_TOKEN is None:
+        raise AssertionError(
+            'Could not get ACCESS_TOKEN from OS environment variables')
+    return ACCESS_TOKEN
+
+
+def encode_parameters(kwargs):
+    """Encode URL parameters dictionary."""
+    params = {}
+    for key, value in six.iteritems(kwargs):
+        if value is None:
+            continue
+        params[key] = encode_string(value)
+    return params

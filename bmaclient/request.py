@@ -1,6 +1,17 @@
-from six.moves.urllib.parse import urlencode
+import json
 import six
+from six.moves.urllib.parse import urlencode
 from httplib2 import Http
+
+from .utils import encode_parameters
+
+
+class OAuth2AuthExchangeError(Exception):
+    def __init__(self, description):
+        self.description = description
+
+    def __str__(self):
+        return self.description
 
 
 class Request(object):
@@ -76,3 +87,102 @@ class Request(object):
         http_obj = Http() if six.PY3 else Http(
             disable_ssl_certificate_validation=True)
         return http_obj.request(url, method, body=body, headers=headers)
+
+
+class OAuth2API(object):
+
+    host = None
+    base_path = None
+    protocol = 'http'
+    api_name = 'OAuth2API'
+    authorize_url = None
+    redirect_uri = None
+    access_token_url = None
+    access_token_field = 'access_token'
+
+    def __init__(self, **kwargs):
+        self.client_id = kwargs.get('client_id')
+        self.client_secret = kwargs.get('client_secret')
+        self.access_token = kwargs.get('access_token')
+        self.redirect_uri = kwargs.get('redirect_uri')
+
+    def get_authorize_url(self, scope=None):
+        request = OAuth2AuthExchangeRequest(self)
+        return request.get_authorize_url(scope=scope)
+
+    def get_authorize_login_url(self, scope=None):
+        request = OAuth2AuthExchangeRequest(self)
+        return request.get_authorize_login_url(scope=scope)
+
+    def exchange_code_for_access_token(self, code):
+        request = OAuth2AuthExchangeRequest(self)
+        return request.exchange_for_access_token(code=code)
+
+    def exchange_xauth_login_for_access_token(self, username, password,
+                                              scope=None):
+        request = OAuth2AuthExchangeRequest(self)
+        return request.exchange_for_access_token(
+            username=username, password=password, scope=scope)
+
+
+class OAuth2AuthExchangeRequest(object):
+
+    def __init__(self, api):
+        self.api = api
+
+    def _url_for_authorize(self, scope=None):
+        client_params = {
+            'client_id': self.api.client_id,
+            'response_type': 'code',
+            'redirect_uri': self.api.redirect_uri
+        }
+        if scope:
+            client_params.update(scope=' '.join(scope))
+        url_params = urlencode(encode_parameters(client_params))
+        return '{}?{}'.format(self.api.authorize_url, url_params)
+
+    def _data_for_exchange(self, code=None, username=None, password=None,
+                           scope=None):
+        client_params = {
+            'client_id': self.api.client_id,
+            'client_secret': self.api.client_secret,
+            'redirect_uri': self.api.redirect_uri,
+            'grant_type': 'authorization_code'
+        }
+        if code:
+            client_params.update(code=code)
+        elif username and password:
+            client_params.update(username=username, password=password,
+                                 grant_type='password')
+            if scope:
+                client_params.update(scope=' '.join(scope))
+        return urlencode(encode_parameters(client_params))
+
+    def get_authorize_url(self, scope=None):
+        return self._url_for_authorize(scope=scope)
+
+    def get_authorize_login_url(self, scope=None):
+        http_obj = Http(disable_ssl_certificate_validation=True)
+
+        url = self._url_for_authorize(scope=scope)
+        response, content = http_obj.request(url)
+        if response['status'] != '200':
+            raise OAuth2AuthExchangeError(
+                'The server returned a non-200 response for URL {}'.format(
+                    url))
+        redirected_to = response['content-location']
+        return redirected_to
+
+    def exchange_for_access_token(self, code=None, username=None,
+                                  password=None, scope=None):
+        data = self._data_for_exchange(code, username, password, scope)
+        url = self.api.access_token_url
+        http_obj = Http(disable_ssl_certificate_validation=True)
+        headers = {'Content-type': 'application/x-www-form-urlencoded'}
+        response, content = http_obj.request(url, method='POST', body=data,
+                                             headers=headers)
+        parsed_content = json.loads(content.decode('utf-8'))
+        if int(response['status']) != 200:
+            raise OAuth2AuthExchangeError(
+                parsed_content.get('error_message', ''))
+        return response, parsed_content
