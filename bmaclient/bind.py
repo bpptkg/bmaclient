@@ -6,6 +6,13 @@ from six.moves.urllib.parse import quote
 from .request import Request
 from .utils import encode_string
 
+ERROR_STATUS = {
+    '400': 'HTTP_BAD_REQUEST',
+    '403': 'HTTP_PERMISSION_DENIED',
+    '404': 'HTTP_NOT_FOUND',
+    '500': 'HTTP_SERVER_ERROR',
+}
+
 re_path_template = re.compile(r'{\w+}')
 
 
@@ -85,26 +92,12 @@ def bind_method(**config):
             response, content = Request(self.api).make_request(
                 url, method=method, body=body, headers=headers)
 
-            if response['status'] == '400':
+            if response['status'] in ERROR_STATUS:
                 raise APIError(
                     response['status'],
-                    'HTTP_BAD_REQUEST',
+                    ERROR_STATUS[response['status']],
                     content)
-            elif response['status'] == '403':
-                raise APIError(
-                    response['status'],
-                    'HTTP_PERMISSION_DENIED',
-                    content)
-            elif response['status'] == '404':
-                raise APIError(
-                    response['status'],
-                    'HTTP_NOT_FOUND',
-                    content)
-            elif response['status'] == '500':
-                raise APIError(
-                    response['status'],
-                    'HTTP_SERVER_ERROR',
-                    content)
+
             if content:
                 try:
                     content_obj = json.loads(content.decode('utf-8'))
