@@ -12,7 +12,7 @@ def read(filename):
 setup(
     name='bmaclient',
     version=get_version(),
-    description='BPPTKG Monitoring API Client',
+    description='BPPTKG Monitoring API Python Client',
     long_description=read('README.md'),
     long_description_content_type='text/markdown',
     license='MIT',
