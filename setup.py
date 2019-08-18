@@ -2,7 +2,7 @@
 
 import os
 
-from distutils.core import setup
+from setuptools import setup, find_packages
 from bmaclient.version import get_version
 
 
@@ -14,14 +14,14 @@ setup(
     version=get_version(),
     description='BPPTKG Monitoring API Client',
     long_description=read('README.md'),
-    long_description_content_type="text/markdown",
+    long_description_content_type='text/markdown',
     license='MIT',
     install_requires=['httplib2', 'six'],
     author='Indra Rudianto',
     author_email='indrarudianto.official@gmail.com',
     url='https://gitlab.com/bpptkg/bmaclient',
     zip_safe=True,
-    packages=['bmaclient'],
+    packages=find_packages(exclude=['tests', 'docs']),
     python_requires='>=3.5',
     classifiers=[
         'Development Status :: 5 - Production/Stable',
