@@ -1,0 +1,4 @@
+recursive-exclude tests *
+include *.md
+include LICENSE
+include AUTHORS

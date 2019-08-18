@@ -14,6 +14,7 @@ setup(
     version=get_version(),
     description='BPPTKG Monitoring API Client',
     long_description=read('README.md'),
+    long_description_content_type="text/markdown",
     license='MIT',
     install_requires=['httplib2', 'six'],
     author='Indra Rudianto',
