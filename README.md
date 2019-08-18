@@ -4,35 +4,9 @@ BPPTKG Monitoring API Python Client
 
 ## Installation
 
-Clone the project from GitLab repository server via `ssh`:
+Install from PyPI by typing this command:
 
-    git clone git@gitlab.com:bpptkg/bmaclient.git
-
-or clone via `https`:
-
-    git clone https://gitlab.com/bpptkg/bmaclient.git
-
-Checkout to the latest stable tag:
-
-    git fetch --tags
-    git checkout tags/v<major>.<minor>.<patch>
-
-    # Example
-    git checkout tags/v0.0.1
-
-Make Python virtual environment and activate the virtual environment:
-
-    virtualenv -p python3 venv
-    source venv/bin/activate
-
-Install dependency packages:
-
-    cd /path/to/bmaclient/
-    pip install -r requirements.txt
-
-Install the package:
-
-    python setup.py install
+    pip install -U bmaclient
 
 Another options is to download archive file from GitLab repository and install
 the package:
