@@ -21,6 +21,7 @@ setup(
     url='https://gitlab.com/bpptkg/bmaclient',
     zip_safe=True,
     packages=['bmaclient'],
+    python_requires='>=3.5',
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Environment :: Console',
