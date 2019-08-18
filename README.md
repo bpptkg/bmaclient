@@ -8,15 +8,6 @@ Install from PyPI by typing this command:
 
     pip install -U bmaclient
 
-Another options is to download archive file from GitLab repository and install
-the package:
-
-    tar -xvf bmaclient-v0.1.0.tar.gz
-    cd bmaclient-v0.1.0
-
-    pip install -r requirements.txt
-    python setup.py install
-
 ## Requirements
 
 * Python 3.5+
