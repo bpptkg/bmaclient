@@ -165,7 +165,7 @@ class OAuth2AuthExchangeRequest(object):
         http_obj = Http(disable_ssl_certificate_validation=True)
 
         url = self._url_for_authorize(scope=scope)
-        response, content = http_obj.request(url)
+        response, __ = http_obj.request(url)
         if response['status'] != '200':
             raise OAuth2AuthExchangeError(
                 'The server returned a non-200 response for URL {}'.format(
