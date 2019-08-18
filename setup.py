@@ -3,20 +3,23 @@
 import os
 
 from setuptools import setup, find_packages
-from bmaclient.version import get_version
 
 
 def read(filename):
     return open(os.path.join(os.path.dirname(__file__), filename)).read()
 
+
 setup(
     name='bmaclient',
-    version=get_version(),
+    version='0.1.2',
     description='BPPTKG Monitoring API Python Client',
     long_description=read('README.md'),
     long_description_content_type='text/markdown',
     license='MIT',
-    install_requires=['httplib2', 'six'],
+    install_requires=[
+        'httplib2>=0.9',
+        'six>=1.8.0',
+    ],
     author='Indra Rudianto',
     author_email='indrarudianto.official@gmail.com',
     url='https://gitlab.com/bpptkg/bmaclient',
