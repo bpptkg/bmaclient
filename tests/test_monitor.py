@@ -16,6 +16,7 @@ MONITORING_API = (
     'rsam_infrasound',
     'rsam_infrasound_band',
     'thermal',
+    'thermal2',
     'tiltmeter',
     'tiltmeter_raw',
     'tiltborehole',
@@ -32,13 +33,12 @@ class MonitoringAPITestWithAPIKey(unittest.TestCase):
         self.api = MonitoringAPI(api_key=get_api_key())
 
     def test_permissions(self):
-        api = MonitoringAPI()
         for name in MONITORING_API:
-            self.assertRaises(APIError, api.get_fetch_method(name))
+            self.assertRaises(APIError, self.api.get_fetch_method(name))
 
     def test_fetch_method(self):
         for name in MONITORING_API:
-            response = api.get_fetch_method(name)()
+            response = self.api.get_fetch_method(name)()
             self.assertIsNotNone(response)
 
 
@@ -48,13 +48,12 @@ class MonitoringAPITestWithAccessToken(unittest.TestCase):
         self.api = MonitoringAPI(access_token=get_access_token())
 
     def test_permissions(self):
-        api = MonitoringAPI()
         for name in MONITORING_API:
-            self.assertRaises(APIError, api.get_fetch_method(name))
+            self.assertRaises(APIError, self.api.get_fetch_method(name))
 
     def test_fetch_method(self):
         for name in MONITORING_API:
-            response = api.get_fetch_method(name)()
+            response = self.api.get_fetch_method(name)()
             self.assertIsNotNone(response)
 
 

@@ -65,6 +65,8 @@ class MonitoringAPI(OAuth2API):
 
     fetch_thermal = bind_method(path='thermal/')
 
+    fetch_thermal2 = bind_method(path='thermal2/')
+
     fetch_tiltmeter = bind_method(
         path='tiltmeter/{station}/',
         accepts_parameters=['station'])
