@@ -6,12 +6,12 @@ SUPPORTED_FORMATS = ['json']
 
 class MonitoringAPI(OAuth2API):
 
-    host = '192.168.5.10'
+    host = 'cendana15.com:8080'
     base_path = 'api/v1/'
     protocol = 'http'
     api_name = 'BPPTKG Monitoring API'
-    authorize_url = 'http://192.168.5.10/oauth/authorize/'
-    access_token_url = 'http://192.168.5.10/oauth/token/'
+    authorize_url = 'http://cendana15.com:8080/oauth/authorize/'
+    access_token_url = 'http://cendana15.com:8080/oauth/token/'
     access_token_field = 'access_token'
     redirect_uri = None
 

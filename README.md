@@ -1,6 +1,6 @@
 # bmaclient
 
-BPPTKG Monitoring API Python Client
+BPPTKG Monitoring API Python Client.
 
 ## Installation
 
@@ -91,7 +91,7 @@ api.host = 'SERVER_ADDRESS:PORT'
 ## Request Methods
 
 The following URL paths are relative to the base API URL
-`http://192.168.5.10/api/v1/`.
+`http://cendana15.com:8080/api/v1/`.
 
 |           API Name           |               URL Path               |      Python Method Name      |
 | ---------------------------- | ------------------------------------ | ---------------------------- |
