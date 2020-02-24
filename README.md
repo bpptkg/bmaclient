@@ -124,7 +124,7 @@ The following URL paths are relative to the base API URL
 | User Detail                  | `/users/{pk}/`                       | `user`                       |
 | Search User                  | `/users/`                            | `search_users`               |
 
-For more information about BMA API, see [the BMA API documentation](http://192.168.5.10/docs/).
+For more information about BMA API, see [the BMA API documentation](http://cendana15.com:8080/docs/).
 
 ## Support
 
