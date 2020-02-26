@@ -24,6 +24,7 @@ MONITORING_API = (
     'bulletin',
     'energy',
     'magnitude',
+    'meteorology',
 )
 
 
