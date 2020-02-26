@@ -101,6 +101,7 @@ The following URL paths are relative to the base API URL
 | Gas Temperature              | `/gas/temperature/`                  | `fetch_gas_temperature`      |
 | GPS Positon                  | `/gps/position/`                     | `fetch_gps_position`         |
 | GPS Baseline                 | `/gps/baseline/`                     | `fetch_gps_baseline`         |
+| Meteorology                  | `/meteorology/`                      | `fetch_meteorology`          |
 | RSAM Seismic                 | `/rsam/seismic/{station}/`           | `fetch_rsam_seismic`         |
 | RSAM Seismic Band            | `/rsam/seismic/{station}/{band}/`    | `fetch_rsam_seismic_band`    |
 | RSAM Infrasound              | `/rsam/infrasound/{station}/`        | `fetch_rsam_infrasound`      |
