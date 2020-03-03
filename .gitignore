@@ -6,3 +6,5 @@ bmaclient.egg-info/
 test_settings*.py
 .vscode
 TODO
+venv/
+venv3/
