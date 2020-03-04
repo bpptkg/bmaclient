@@ -5,6 +5,13 @@ SUPPORTED_FORMATS = ['json']
 
 
 class MonitoringAPI(OAuth2API):
+    """
+    Monitoring API object.
+
+    This class represent and API object where users can fetch any kind of
+    monitoring data type. In order to grant the request, api_key or access_token
+    field must be provided when creating an instance.
+    """
 
     host = 'cendana15.com:8080'
     base_path = 'api/v1/'
