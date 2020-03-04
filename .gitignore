@@ -1,10 +1,17 @@
+# IDE vendors
+.vscode/
+.idea/
+
+# Python related folders
 __pycache__
-*.pyc
+*.py[co]
 build/
 dist/
 bmaclient.egg-info/
-test_settings*.py
-.vscode
-TODO
+
+# Virtual environment folders
 venv/
 venv3/
+
+# Misc.
+TODO
