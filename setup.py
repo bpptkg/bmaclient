@@ -3,7 +3,8 @@
 import os
 
 from setuptools import setup, find_packages
-from bmaclient.version import get_version
+
+__version__ = '0.5.0'
 
 
 def read(filename):
@@ -12,7 +13,7 @@ def read(filename):
 
 setup(
     name='bmaclient',
-    version=get_version(),
+    version=__version__,
     description='BPPTKG Monitoring API Python Client',
     long_description=read('README.md'),
     long_description_content_type='text/markdown',
