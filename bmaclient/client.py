@@ -8,7 +8,7 @@ class MonitoringAPI(OAuth2API):
     """
     Monitoring API object.
 
-    This class represent and API object where users can fetch any kind of
+    This class represents an API object where users can fetch any kind of
     monitoring data type. In order to grant the request, api_key or access_token
     field must be provided when creating an instance.
     """
