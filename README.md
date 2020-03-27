@@ -16,8 +16,8 @@ Install from PyPI by typing this command:
 
 ## Making Requests
 
-You must set valid API key or OAuth2 access token to make authenticated
-request. For example, using API key:
+You must set valid API key or OAuth2 access token to make authenticated request.
+For example, using API key:
 
 ```python
 from bmaclient import MonitoringAPI
@@ -71,8 +71,8 @@ print(content)
 
 ## Changing the API Host
 
-Default API host for the libary is `192.168.5.10`. If you want to change the
-host, for example using public IP or so, you can write the code as follow:
+Default API host for the libary is `cendana15.com:8080`. If you want to change
+the host, for example using public IP or so, you can write the code as follow:
 
 ```python
 from bmaclient import MonitoringAPI
@@ -125,7 +125,8 @@ The following URL paths are relative to the base API URL
 | User Detail                  | `/users/{pk}/`                       | `user`                       |
 | Search User                  | `/users/`                            | `search_users`               |
 
-For more information about BMA API, see [the BMA API documentation](http://cendana15.com:8080/docs/).
+For more information about BMA API, see [the BMA API
+documentation](http://cendana15.com:8080/docs/).
 
 ## Support
 
@@ -134,13 +135,14 @@ this project, you can contact him at <indrarudianto.official@gmail.com>.
 
 ## Credit
 
-This project is highly inspired by [python-instagram](https://github.com/facebookarchive/python-instagram)
-project and use the same design pattern.
-The project is licensed under BSD license.
-See [LICENSE](https://github.com/Instagram/python-instagram/blob/master/LICENSE.md) for details.
+This project is highly inspired by
+[python-instagram](https://github.com/facebookarchive/python-instagram) project
+and use the same design pattern. The project is licensed under BSD license. See
+[LICENSE](https://github.com/Instagram/python-instagram/blob/master/LICENSE.md)
+for details.
 
 ## License
 
 By contributing to the project, you agree that your contributions will be
-licensed under its MIT license.
-See [LICENSE](https://gitlab.com/bpptkg/bmaclient/blob/master/LICENSE) for details.
+licensed under its MIT license. See
+[LICENSE](https://gitlab.com/bpptkg/bmaclient/blob/master/LICENSE) for details.
