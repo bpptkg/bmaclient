@@ -111,6 +111,7 @@ The following URL paths are relative to the base API URL
 | Tiltmeter Platform           | `/tiltmeter/{station}/`              | `fetch_tiltmeter`            |
 | Tiltmeter Platform Raw       | `/tiltmeter/raw/{station}/`          | `fetch_tiltmeter_raw`        |
 | Tiltmeter Borehole           | `/tiltborehole/`                     | `fetch_tiltborehole`         |
+| Tiltmeter TLR                | `/tiltmeter/tlr/{station}/`          | `fetch_tiltmeter_tlr`        |
 | Seismicity                   | `/seismicity`                        | `fetch_seismicity`           |
 | Seismic Bulletin             | `/bulletin/`                         | `fetch_bulletin`             |
 | Seismic Energy               | `/energy/`                           | `fetch_energy`               |

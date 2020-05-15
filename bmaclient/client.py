@@ -86,6 +86,10 @@ class MonitoringAPI(OAuth2API):
         path='tiltborehole/{station}/',
         accepts_parameters=['station'])
 
+    fetch_tiltmeter_tlr = bind_method(
+        path='tiltmeter/tlr/{station}/',
+        accepts_parameters=['station'])
+
     fetch_seismicity = bind_method(path='seismicity/')
 
     fetch_bulletin = bind_method(path='bulletin/')
