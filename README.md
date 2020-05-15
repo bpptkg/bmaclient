@@ -43,8 +43,8 @@ server resource, It's **recommended** to use OAuth2 access token.
 You can apply field lookup filtering by passing keyword arguments:
 
 ```python
-content = api.fetch_bulletin(eventdate__gte='2019-07-01',
-                             eventdate__lt='2019-07-11',
+content = api.fetch_bulletin(eventdate__gte='2019-07-01 12:24:00',
+                             eventdate__lt='2019-07-11 13:14:00',
                              eventtype='MP',
                              nolimit=True)
 print(content)
