@@ -14,21 +14,21 @@ def object_from_list(entry):
     return [DataModel(**item) for item in entry]
 
 
-def get_api_key():
+def get_api_key(name='API_KEY'):
     """Read API key from OS environment variables."""
-    API_KEY = os.environ.get('API_KEY')
+    API_KEY = os.environ.get(name)
     if API_KEY is None:
-        raise AssertionError(
-            'Could not get API_KEY from OS environment variables')
+        raise ValueError(
+            'Could not get {} from OS environment variables'.format(name))
     return API_KEY
 
 
-def get_access_token():
+def get_access_token(name='ACCESS_TOKEN'):
     """Read OAuth2 access token from OS environment variables."""
-    ACCESS_TOKEN = os.environ.get('ACCESS_TOKEN')
+    ACCESS_TOKEN = os.environ.get(name)
     if ACCESS_TOKEN is None:
-        raise AssertionError(
-            'Could not get ACCESS_TOKEN from OS environment variables')
+        raise ValueError(
+            'Could not get {} from OS environment variables'.format(name))
     return ACCESS_TOKEN
 
 
