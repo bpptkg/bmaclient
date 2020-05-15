@@ -41,19 +41,19 @@ class Request(object):
     def url_for_get(self, path, parameters):
         return self._full_url_with_params(path, parameters)
 
-    def get_request(self, path, **kwargs):
+    def get(self, path, **kwargs):
         return self.make_request(self.prepare_request('GET', path, kwargs))
 
-    def post_request(self, path, **kwargs):
+    def post(self, path, **kwargs):
         return self.make_request(self.prepare_request('POST', path, kwargs))
 
-    def put_request(self, path, **kwargs):
+    def put(self, path, **kwargs):
         return self.make_request(self.prepare_request('PUT', path, kwargs))
 
-    def patch_request(self, path, **kwargs):
+    def patch(self, path, **kwargs):
         return self.make_request(self.prepare_request('PATCH', path, kwargs))
 
-    def delete_request(self, path, **kwargs):
+    def delete(self, path, **kwargs):
         return self.make_request(self.prepare_request('DELETE', path, kwargs))
 
     def prepare_request(self, method, path, params):
