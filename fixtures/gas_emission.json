@@ -1,0 +1,67 @@
+[
+    {
+        "timestamp": "2018-11-06T01:51:32+07:00",
+        "co2_min": 104.0,
+        "co2_max": 188.0,
+        "co2_avg": 146.75,
+        "temperature_min": 37.95,
+        "temperature_max": 38.09,
+        "temperature_avg": 38.01,
+        "humidity_min": 45.24,
+        "humidity_max": 46.3,
+        "humidity_avg": 45.99,
+        "input_battery_voltage": 12.03
+    },
+    {
+        "timestamp": "2018-11-12T17:06:34+07:00",
+        "co2_min": 141.0,
+        "co2_max": 224.0,
+        "co2_avg": 177.0,
+        "temperature_min": 42.19,
+        "temperature_max": 42.48,
+        "temperature_avg": 42.34,
+        "humidity_min": 47.53,
+        "humidity_max": 47.82,
+        "humidity_avg": 47.69,
+        "input_battery_voltage": 12.03
+    },
+    {
+        "timestamp": "2018-11-12T23:27:12+07:00",
+        "co2_min": 143.0,
+        "co2_max": 229.0,
+        "co2_avg": 181.25,
+        "temperature_min": 38.61,
+        "temperature_max": 38.91,
+        "temperature_avg": 38.74,
+        "humidity_min": 47.14,
+        "humidity_max": 47.94,
+        "humidity_avg": 47.69,
+        "input_battery_voltage": 12.03
+    },
+    {
+        "timestamp": "2018-11-13T05:47:50+07:00",
+        "co2_min": 175.0,
+        "co2_max": 257.0,
+        "co2_avg": 213.75,
+        "temperature_min": 39.99,
+        "temperature_max": 40.2,
+        "temperature_avg": 40.08,
+        "humidity_min": 46.75,
+        "humidity_max": 47.36,
+        "humidity_avg": 47.16,
+        "input_battery_voltage": 12.03
+    },
+    {
+        "timestamp": "2018-11-13T12:08:27+07:00",
+        "co2_min": 139.0,
+        "co2_max": 214.0,
+        "co2_avg": 182.0,
+        "temperature_min": 40.53,
+        "temperature_max": 41.05,
+        "temperature_avg": 40.85,
+        "humidity_min": 48.14,
+        "humidity_max": 49.78,
+        "humidity_avg": 49.33,
+        "input_battery_voltage": 12.03
+    }
+]

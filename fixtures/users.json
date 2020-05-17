@@ -1,0 +1,51 @@
+[
+    {
+        "id": 1,
+        "username": "indra",
+        "first_name": "Indra",
+        "last_name": "Rudianto",
+        "profile_picture": null
+    },
+    {
+        "id": 2,
+        "username": "dwijay",
+        "first_name": "Dwi",
+        "last_name": "Jayanto",
+        "profile_picture": null
+    },
+    {
+        "id": 3,
+        "username": "ilham",
+        "first_name": "",
+        "last_name": "",
+        "profile_picture": null
+    },
+    {
+        "id": 4,
+        "username": "abs",
+        "first_name": "Agus",
+        "last_name": "Budi Santoso",
+        "profile_picture": null
+    },
+    {
+        "id": 5,
+        "username": "noki",
+        "first_name": "Noki",
+        "last_name": "Rahmadi",
+        "profile_picture": null
+    },
+    {
+        "id": 6,
+        "username": "alfa",
+        "first_name": "",
+        "last_name": "",
+        "profile_picture": null
+    },
+    {
+        "id": 7,
+        "username": "alam",
+        "first_name": "Kebak",
+        "last_name": "Alam",
+        "profile_picture": null
+    }
+]

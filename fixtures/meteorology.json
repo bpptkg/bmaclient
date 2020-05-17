@@ -1,0 +1,62 @@
+[
+    {
+        "timestamp": "2020-01-01T00:00:00",
+        "wind_direction": 72.0,
+        "wind_speed": 9.71,
+        "air_temperature": 13.2,
+        "air_humidity": 74.51,
+        "air_pressure": 74.27,
+        "rainfall": 582.1,
+        "amount": 7999.0,
+        "battery_voltage": 12.18,
+        "power_temperature": 17.74
+    },
+    {
+        "timestamp": "2020-01-01T00:01:00",
+        "wind_direction": 78.0,
+        "wind_speed": 8.91,
+        "air_temperature": 13.3,
+        "air_humidity": 74.1,
+        "air_pressure": 74.27,
+        "rainfall": 582.1,
+        "amount": 7999.0,
+        "battery_voltage": 12.18,
+        "power_temperature": 17.73
+    },
+    {
+        "timestamp": "2020-01-01T00:02:00",
+        "wind_direction": 65.0,
+        "wind_speed": 8.6,
+        "air_temperature": 13.3,
+        "air_humidity": 73.7,
+        "air_pressure": 74.27,
+        "rainfall": 582.1,
+        "amount": 7999.0,
+        "battery_voltage": 12.18,
+        "power_temperature": 17.73
+    },
+    {
+        "timestamp": "2020-01-01T00:03:00",
+        "wind_direction": 71.0,
+        "wind_speed": 8.97,
+        "air_temperature": 13.3,
+        "air_humidity": 73.6,
+        "air_pressure": 74.27,
+        "rainfall": 582.1,
+        "amount": 7999.0,
+        "battery_voltage": 12.18,
+        "power_temperature": 17.73
+    },
+    {
+        "timestamp": "2020-01-01T00:04:00",
+        "wind_direction": 80.0,
+        "wind_speed": 9.46,
+        "air_temperature": 13.3,
+        "air_humidity": 73.1,
+        "air_pressure": 74.27,
+        "rainfall": 582.1,
+        "amount": 7999.0,
+        "battery_voltage": 12.18,
+        "power_temperature": 17.72
+    }
+]
