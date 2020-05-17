@@ -1,10 +1,14 @@
 #!/usr/bin/env python
 
 import os
+import sys
 
 from setuptools import setup, find_packages
 
 __version__ = '0.6.0'
+
+if sys.version_info < (3, 5):
+    sys.exit("Error: bmaclient requires Python 3.5 or above.")
 
 
 def read(filename):
@@ -37,5 +41,6 @@ setup(
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
     ]
 )
