@@ -4,6 +4,9 @@ from bmaclient.request import Request
 
 
 class API(object):
+    """
+    API test class.
+    """
     host = 'cendana15.com:8080'
     base_path = 'api/v1/'
     protocol = 'http'
