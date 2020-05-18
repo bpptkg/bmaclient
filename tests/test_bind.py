@@ -1,7 +1,7 @@
 import unittest
 
 from bmaclient.client import MonitoringAPI
-from bmaclient.bind import APIClientError
+from bmaclient.bind import APIClientError, MonitoringAPIMethod
 
 
 class BindMethodTest(unittest.TestCase):
@@ -11,6 +11,7 @@ class BindMethodTest(unittest.TestCase):
     def test_bind(self):
         method = self.api.fetch_doas(return_as_instance=True)
         self.assertEqual(method.path, 'doas/')
+        self.assertTrue(isinstance(method, MonitoringAPIMethod))
 
         method = self.api.fetch_gps_position(station='pasarbubar',
                                              timestamp__gte='2020-01-01',
