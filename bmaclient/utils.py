@@ -4,9 +4,14 @@ import six
 from .models import DataModel
 
 
-def encode_string(value):
-    return value.encode('utf-8') \
-        if isinstance(value, six.text_type) else str(value)
+def encode_string(s, encoding='utf-8'):
+    if isinstance(s, bytes):
+        return s
+    if isinstance(s, six.text_type):
+        s = s.encode(encoding)
+    else:
+        s = str(s).encode(encoding)
+    return s
 
 
 def object_from_list(entry):
