@@ -1,2 +1,6 @@
 six>=1.8.0
 httplib2>=0.9
+pytest
+tox
+coverage
+autopep8
