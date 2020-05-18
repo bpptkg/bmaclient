@@ -29,7 +29,7 @@ class DataModel(object):
     def __setitem__(self, key, value):
         if not hasattr(self, key):
             setattr(self, key, value)
-        self.keys.append(key)
+            self.keys.append(key)
 
     def get_keys(self):
         """Get all field keys as list."""
