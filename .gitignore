@@ -9,6 +9,7 @@ build/
 dist/
 bmaclient.egg-info/
 .pytest_cache/
+.coverage
 
 # Virtual environment folders
 venv/
