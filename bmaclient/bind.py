@@ -111,6 +111,8 @@ class MonitoringAPIMethod(object):
 
         if response['status'] == '200':
             if self.paginates:
+                if not content_obj:
+                    return content_obj, None, None
                 results = content_obj['results']
                 next_url = content_obj['links']['next']
                 previous_url = content_obj['links']['previous']
