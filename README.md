@@ -110,7 +110,7 @@ The following URL paths are relative to the base API URL
 | Thermal v2                   | `/thermal2/`                         | `fetch_thermal2`             |
 | Tiltmeter Platform           | `/tiltmeter/{station}/`              | `fetch_tiltmeter`            |
 | Tiltmeter Platform Raw       | `/tiltmeter/raw/{station}/`          | `fetch_tiltmeter_raw`        |
-| Tiltmeter Borehole           | `/tiltborehole/`                     | `fetch_tiltborehole`         |
+| Tiltmeter Borehole           | `/tiltborehole/{station}/`           | `fetch_tiltborehole`         |
 | Tiltmeter TLR                | `/tiltmeter/tlr/{station}/`          | `fetch_tiltmeter_tlr`        |
 | Seismicity                   | `/seismicity`                        | `fetch_seismicity`           |
 | Seismic Bulletin             | `/bulletin/`                         | `fetch_bulletin`             |
