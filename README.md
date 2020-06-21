@@ -1,6 +1,7 @@
 # bmaclient
 
-BPPTKG Monitoring API Python Client.
+The bmaclient is official BPPTKG Monitoring API (BMA) Python client. It can be
+used to fetch various monitoring data from BMA server using Python.
 
 ## Installation
 
@@ -126,21 +127,13 @@ The following URL paths are relative to the base API URL
 | User Detail                  | `/users/{pk}/`                       | `user`                       |
 | Search User                  | `/users/`                            | `search_users`               |
 
-For more information about BMA API, see [the BMA API
+For more information about BMA, see [the BMA
 documentation](http://cendana15.com:8080/docs/).
 
 ## Support
 
 This project is maintained by Indra Rudianto. If you have any question about
 this project, you can contact him at <indrarudianto.official@gmail.com>.
-
-## Credit
-
-This project is highly inspired by
-[python-instagram](https://github.com/facebookarchive/python-instagram) project
-and use the same design pattern. The project is licensed under BSD license. See
-[LICENSE](https://github.com/Instagram/python-instagram/blob/master/LICENSE.md)
-for details.
 
 ## License
 
