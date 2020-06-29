@@ -1,7 +1,7 @@
-import six
-
-
 class ApiModel(object):
+    """
+    Base API model object.
+    """
 
     @classmethod
     def object_from_dict(cls, entry):

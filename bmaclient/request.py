@@ -1,7 +1,8 @@
 import json
 import six
-from six.moves.urllib.parse import urlencode
+
 from httplib2 import Http
+from six.moves.urllib.parse import urlencode
 
 from .utils import encode_parameters
 
@@ -15,6 +16,9 @@ class OAuth2AuthExchangeError(Exception):
 
 
 class Request(object):
+    """
+    Class representing request object.
+    """
 
     def __init__(self, api):
         self.api = api
