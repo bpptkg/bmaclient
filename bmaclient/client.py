@@ -13,12 +13,12 @@ class MonitoringAPI(OAuth2API):
     field must be provided when creating an instance.
     """
 
-    host = 'cendana15.com:8080'
+    host = 'bma.cendana15.com'
     base_path = 'api/v1/'
-    protocol = 'http'
+    protocol = 'https'
     api_name = 'BPPTKG Monitoring API'
-    authorize_url = 'http://cendana15.com:8080/oauth/authorize/'
-    access_token_url = 'http://cendana15.com:8080/oauth/token/'
+    authorize_url = 'https://bma.cendana15.com/oauth/authorize/'
+    access_token_url = 'https://bma.cendana15.com/oauth/token/'
     access_token_field = 'access_token'
     redirect_uri = None
 
