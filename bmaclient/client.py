@@ -1,7 +1,7 @@
 from .bind import bind_method
 from .request import OAuth2API
 
-SUPPORTED_FORMATS = ['json']
+SUPPORTED_FORMATS = ['json', 'object']
 
 
 class MonitoringAPI(OAuth2API):

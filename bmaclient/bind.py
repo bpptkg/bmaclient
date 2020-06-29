@@ -5,7 +5,7 @@ import six
 from six.moves.urllib.parse import quote
 
 from .request import Request
-from .utils import encode_string
+from .utils import encode_string, object_from_list
 
 ERROR_STATUS = {
     '400': 'HTTP_BAD_REQUEST',
@@ -135,8 +135,14 @@ class MonitoringAPIMethod(object):
 
         content, next_url, previous_url = self._do_api_request(
             url, method, body, headers)
+
         if self.paginates:
+            if self.api.format == 'object':
+                return object_from_list(content), next_url, previous_url
             return content, next_url, previous_url
+
+        if self.api.format == 'object':
+            return object_from_list(content)
         return content
 
 
