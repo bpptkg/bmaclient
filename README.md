@@ -11,9 +11,9 @@ Install from PyPI by typing this command:
 
 ## Requirements
 
-* Python 3.5+
-* httplib2
-* six
+- Python 3.5+
+- httplib2
+- six
 
 ## Making Requests
 
@@ -94,7 +94,7 @@ api.host = 'SERVER_ADDRESS:PORT'
 The following URL paths are relative to the base API URL
 `http://cendana15.com:8080/api/v1/`.
 
-|           API Name           |               URL Path               |      Python Method Name      |
+| API Name                     | URL Path                             | Python Method Name           |
 | ---------------------------- | ------------------------------------ | ---------------------------- |
 | DOAS                         | `/doas/`                             | `fetch_doas`                 |
 | EDM                          | `/edm/`                              | `fetch_edm`                  |
@@ -103,6 +103,8 @@ The following URL paths are relative to the base API URL
 | GPS Positon                  | `/gps/position/`                     | `fetch_gps_position`         |
 | GPS Baseline                 | `/gps/baseline/`                     | `fetch_gps_baseline`         |
 | Meteorology                  | `/meteorology/`                      | `fetch_meteorology`          |
+| Pasarbubar Rainfall          | `/meteorology/rainfall/`             | `fetch_rainfall`             |
+| Pasarbubar Wind Rose         | `/meteorology/windrose/`             | `fetch_windrose`             |
 | RSAM Seismic                 | `/rsam/seismic/{station}/`           | `fetch_rsam_seismic`         |
 | RSAM Seismic Band            | `/rsam/seismic/{station}/{band}/`    | `fetch_rsam_seismic_band`    |
 | RSAM Infrasound              | `/rsam/infrasound/{station}/`        | `fetch_rsam_infrasound`      |

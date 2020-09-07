@@ -12,7 +12,7 @@ from bmaclient.utils import get_api_key
 
 
 def main():
-    print('Checking request...')
+    print('Preparing request...')
     api = MonitoringAPI(api_key=get_api_key())
 
     print('Running: fetch_bulletin')
@@ -128,7 +128,17 @@ def main():
     print('Running: fetch_users')
     api.fetch_users()
 
-    print('All request performed successfully.')
+    print('Running: fetch_rainfall')
+    api.fetch_rainfall()
+    print('Running: fetch_rainfall:interval')
+    api.fetch_rainfall(interval=15)
+
+    print('Running: fetch_windrose')
+    api.fetch_windrose()
+    print('Running: fetch_windrose:params')
+    api.fetch_windrose(bins=5, sector=8, normed=True)
+
+    print('All requests performed successfully.')
 
 
 if __name__ == '__main__':
