@@ -9,12 +9,6 @@ Install from PyPI by typing this command:
 
     pip install -U bmaclient
 
-## Requirements
-
-- Python 3.5+
-- httplib2
-- six
-
 ## Making Requests
 
 You must set valid API key or OAuth2 access token to make authenticated request.
@@ -72,14 +66,23 @@ print(content)
 
 ## Changing the API Host
 
-Default API host for the libary is `cendana15.com:8080`. If you want to change
-the host, for example using public IP or so, you can write the code as follow:
+Default API host for the libary is `bma.cendana15.com`. If you want to change
+the host, for example using other hostname or so, you can write the code as
+follow:
 
 ```python
 from bmaclient import MonitoringAPI
 
 api = MonitoringAPI(api_key='API_KEY')
 api.host = 'SERVER_ADDRESS'
+```
+
+Optionally, change HTTP protocol if the server uses different protocol. Choose
+either `http` or `https` protocol:
+
+```python
+api = MonitoringAPI(api_key='API_KEY')
+api.protocol = 'https'
 ```
 
 Note that you should include server port if the server doesn't use standard
@@ -92,7 +95,7 @@ api.host = 'SERVER_ADDRESS:PORT'
 ## Request Methods
 
 The following URL paths are relative to the base API URL
-`http://cendana15.com:8080/api/v1/`.
+`https://bma.cendana15.com/api/v1/`.
 
 | API Name                     | URL Path                             | Python Method Name           |
 | ---------------------------- | ------------------------------------ | ---------------------------- |
@@ -130,7 +133,7 @@ The following URL paths are relative to the base API URL
 | Search User                  | `/users/`                            | `search_users`               |
 
 For more information about BMA, see [the BMA
-documentation](http://cendana15.com:8080/docs/).
+documentation](https://bma.cendana15.com/docs/).
 
 ## Support
 
