@@ -66,9 +66,9 @@ print(content)
 
 ## Changing the API Host
 
-Default API host for the libary is `bma.cendana15.com`. If you want to change
-the host, for example using other hostname or so, you can write the code as
-follow:
+Starting from version 0.9.0, default API host for the libary is
+`bma.cendana15.com` and using `https` protocol. If you want to change the host,
+for example using other hostname or so, you can write the code as follow:
 
 ```python
 from bmaclient import MonitoringAPI
