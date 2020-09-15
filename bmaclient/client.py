@@ -123,3 +123,7 @@ class MonitoringAPI(OAuth2API):
     search_users = bind_method(path='users/', required_parameters=['search'])
 
     fetch_meteorology = bind_method(path='meteorology/')
+
+    fetch_windrose = bind_method(path='meteorology/windrose/')
+
+    fetch_rainfall = bind_method(path='meteorology/rainfall/')
