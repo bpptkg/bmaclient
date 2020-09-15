@@ -5,7 +5,7 @@ import sys
 
 from setuptools import setup, find_packages
 
-__version__ = '0.8.0'
+__version__ = '0.9.0'
 
 if sys.version_info < (3, 5):
     sys.exit("Error: bmaclient requires Python 3.5 or above.")
