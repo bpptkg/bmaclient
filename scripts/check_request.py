@@ -138,6 +138,11 @@ def main():
     print('Running: fetch_windrose:params')
     api.fetch_windrose(bins=5, sector=8, normed=True)
 
+    print('Running: fetch_topo')
+    api.fetch_topo()
+    print('Running: fetch_topo:model')
+    api.fetch_topo(model='m1000')
+
     print('All requests performed successfully.')
 
 

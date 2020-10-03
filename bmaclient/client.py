@@ -127,3 +127,5 @@ class MonitoringAPI(OAuth2API):
     fetch_windrose = bind_method(path='meteorology/windrose/')
 
     fetch_rainfall = bind_method(path='meteorology/rainfall/')
+
+    fetch_topo = bind_method(path='topo/')
