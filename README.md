@@ -100,6 +100,7 @@ The following URL paths are relative to the base API URL
 |           API Name           |               URL Path               |      Python Method Name      |
 | ---------------------------- | ------------------------------------ | ---------------------------- |
 | DOAS                         | `/doas/`                             | `fetch_doas`                 |
+| DOAS v2                      | `/doas2/{station}/`                  | `fetch_doas2`                |
 | EDM                          | `/edm/`                              | `fetch_edm`                  |
 | Gas Emission                 | `/gas/emission/`                     | `fetch_gas_emission`         |
 | Gas Temperature              | `/gas/temperature/`                  | `fetch_gas_temperature`      |

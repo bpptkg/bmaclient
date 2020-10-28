@@ -129,3 +129,6 @@ class MonitoringAPI(OAuth2API):
     fetch_rainfall = bind_method(path='meteorology/rainfall/')
 
     fetch_topo = bind_method(path='topo/')
+
+    fetch_doas2 = bind_method(path='doas2/{station}/',
+                              accepts_parameters=['station'])

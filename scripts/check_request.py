@@ -143,6 +143,11 @@ def main():
     print('Running: fetch_topo:model')
     api.fetch_topo(model='m1000')
 
+    print('Running: fetch_doas2')
+    api.fetch_doas2(station='babadan')
+    print('Running: fetch_doas2:page')
+    api.fetch_doas2(station='babadan', page=1)
+
     print('All requests performed successfully.')
 
 
