@@ -1,4 +1,5 @@
 from .bind import bind_method
+from .deprecations import deprecated
 from .request import OAuth2API
 
 SUPPORTED_FORMATS = ['json', 'object']
@@ -37,7 +38,12 @@ class MonitoringAPI(OAuth2API):
         method_name = 'fetch_{}'.format(name)
         return getattr(self, method_name, None)
 
-    fetch_doas = bind_method(path='doas/')
+    fetch_doas = deprecated(
+        '0.10.0',
+        'fetch_doas method is deprecated. Use fetch_doas2 method instead. '
+        'See more information at: '
+        'https://bma.cendana15.com/docs/apis/monitoring/doas.html',
+    )(bind_method(path='doas/'))
 
     fetch_gas_emission = bind_method(path='gas/emission/')
 
@@ -71,7 +77,13 @@ class MonitoringAPI(OAuth2API):
         path='rsam/infrasound/{station}/{band}/',
         accepts_parameters=['station', 'band'])
 
-    fetch_thermal = bind_method(path='thermal/')
+    fetch_thermal = deprecated(
+        '0.10.0',
+        'fetch_thermal method is deprecated. '
+        'Use fetch_thermal2 method instead. '
+        'See more information at: '
+        'https://bma.cendana15.com/docs/apis/monitoring/thermal.html',
+    )(bind_method(path='thermal/'))
 
     fetch_thermal2 = bind_method(path='thermal2/')
 

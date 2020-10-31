@@ -7,11 +7,15 @@ How to run:
     $ python scripts/check_request.py
 """
 
+import warnings
+
 from bmaclient import MonitoringAPI
 from bmaclient.utils import get_api_key
 
 
 def main():
+    warnings.simplefilter('always', DeprecationWarning)
+
     print('Preparing request...')
     api = MonitoringAPI(api_key=get_api_key())
 
