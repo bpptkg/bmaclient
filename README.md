@@ -1,7 +1,7 @@
 # bmaclient
 
 The bmaclient is official BPPTKG Monitoring API (BMA) Python client. It can be
-used to fetch various monitoring data from BMA server using Python.
+used to fetch various monitoring data from BMA webservice using Python.
 
 ## Installation
 
@@ -99,7 +99,7 @@ The following URL paths are relative to the base API URL
 
 |           API Name           |               URL Path               |      Python Method Name      |
 | ---------------------------- | ------------------------------------ | ---------------------------- |
-| DOAS                         | `/doas/`                             | `fetch_doas`                 |
+| DOAS (`deprecated`)          | `/doas/`                             | `fetch_doas`                 |
 | DOAS v2                      | `/doas2/{station}/`                  | `fetch_doas2`                |
 | EDM                          | `/edm/`                              | `fetch_edm`                  |
 | Gas Emission                 | `/gas/emission/`                     | `fetch_gas_emission`         |
@@ -113,7 +113,7 @@ The following URL paths are relative to the base API URL
 | RSAM Seismic Band            | `/rsam/seismic/{station}/{band}/`    | `fetch_rsam_seismic_band`    |
 | RSAM Infrasound              | `/rsam/infrasound/{station}/`        | `fetch_rsam_infrasound`      |
 | RSAM Infrasound Band         | `/rsam/infrasound/{station}/{band}/` | `fetch_rsam_infrasound_band` |
-| Thermal                      | `/thermal/`                          | `fetch_thermal`              |
+| Thermal (`deprecated`)       | `/thermal/`                          | `fetch_thermal`              |
 | Thermal v2                   | `/thermal2/`                         | `fetch_thermal2`             |
 | Tiltmeter Platform           | `/tiltmeter/{station}/`              | `fetch_tiltmeter`            |
 | Tiltmeter Platform Raw       | `/tiltmeter/raw/{station}/`          | `fetch_tiltmeter_raw`        |
