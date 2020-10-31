@@ -1,7 +1,7 @@
 import json
 import re
-import six
 
+import six
 from six.moves.urllib.parse import quote
 
 from .request import Request

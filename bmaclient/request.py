@@ -1,6 +1,6 @@
 import json
-import six
 
+import six
 from httplib2 import Http
 from six.moves.urllib.parse import urlencode
 
@@ -8,6 +8,7 @@ from .utils import encode_parameters
 
 
 class OAuth2AuthExchangeError(Exception):
+
     def __init__(self, description):
         self.description = description
 

@@ -9,7 +9,7 @@ class MonitoringAPI(OAuth2API):
     Monitoring API object.
 
     This class represents an API object where users can fetch any kind of
-    monitoring data type. In order to grant the request, api_key or access_token
+    monitoring data. In order to grant the request, `api_key` or `access_token`
     field must be provided when creating an instance.
     """
 
@@ -27,7 +27,8 @@ class MonitoringAPI(OAuth2API):
         if response_format in SUPPORTED_FORMATS:
             self.format = response_format
         else:
-            raise Exception('Unsupported format')
+            raise Exception('Unsupported response format. '
+                            f"Valid formats are: {SUPPORTED_FORMATS}.")
         self.api_key = kwargs.get('api_key')
         super(MonitoringAPI, self).__init__(**kwargs)
 

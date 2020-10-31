@@ -1,10 +1,12 @@
 import os
+
 import six
 
 from .models import DataModel
 
 
 def encode_string(s, encoding='utf-8'):
+    """Encode string s to bytes."""
     if isinstance(s, bytes):
         return s
     if isinstance(s, six.text_type):
