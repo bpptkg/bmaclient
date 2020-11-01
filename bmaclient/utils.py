@@ -5,14 +5,14 @@ import six
 from .models import DataModel
 
 
-def encode_string(s, encoding='utf-8'):
+def encode_string(s, encoding='utf-8', errors='strict'):
     """Encode string s to bytes."""
     if isinstance(s, bytes):
         return s
     if isinstance(s, six.text_type):
-        s = s.encode(encoding)
+        s = s.encode(encoding, errors=errors)
     else:
-        s = str(s).encode(encoding)
+        s = str(s).encode(encoding, errors=errors)
     return s
 
 
