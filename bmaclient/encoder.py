@@ -143,31 +143,51 @@ class ParameterEncoder(object):
                 return encode_basestring(obj)
         return self._iterencode(o)
 
+    def encode_str(self, o):
+        if self.ensure_ascii:
+            return encode_basestring_ascii(o)
+        return encode_basestring(o)
+
+    def encode_bytes(self, o):
+        return o
+
+    def encode_none(self, o):
+        return b''
+
+    def encode_bool(self, o):
+        return encode_basestring_ascii(o).lower()
+
+    def encode_date(self, o):
+        return encode_basestring_ascii(o.strftime(self.datetime_format))
+
+    def encode_datetime(self, o):
+        return encode_basestring_ascii(o.strftime(self.date_format))
+
+    def encode_number(self, o):
+        return encode_basestring_ascii(o)
+
     def _iterencode(self, o):
         if isinstance(o, str):
-            if self.ensure_ascii:
-                return encode_basestring_ascii(o)
-            else:
-                return encode_basestring(o)
+            return self.encode_str(o)
 
         if isinstance(o, bytes):
-            return o
+            return self.encode_bytes(o)
 
         if o is None:
-            return b''
+            return self.encode_none(o)
 
         # Boolean True is also an instance of int, so we need to check it first.
         if isinstance(o, bool):
-            return encode_basestring_ascii(o).lower()
+            return self.encode_bool(o)
         elif isinstance(o, (int, float)):
-            return encode_basestring_ascii(o)
+            return self.encode_number(o)
 
         # This must comes first before datetime.date because datetime.datetime
         # is an instance of datetime.date but not otherwise.
         if isinstance(o, datetime.datetime):
-            return encode_basestring_ascii(o.strftime(self.datetime_format))
+            return self.encode_date(o)
         elif isinstance(o, datetime.date):
-            return encode_basestring_ascii(o.strftime(self.date_format))
+            return self.encode_datetime(o)
 
         if self.default is not None:
             return self.default(o)
