@@ -92,12 +92,124 @@ port. For example:
 api.host = 'SERVER_ADDRESS:PORT'
 ```
 
+## Parameter Encoder
+
+As version 0.10.0, bmaclient adds `bmaclient.encoder.ParameterEncoder` class to
+enable using native Python object in the query parameters. Default encoder
+supports:
+
+- list, tuple
+
+It will be encoded to bytes string of comma separated values. For example:
+
+    [1, 2, 3] -> b'1,2,3'
+    ['a', 'b', 'c'] -> b'a,b,c'
+
+- str
+
+str value will be encoded to bytes string. For example:
+
+    'param' -> b'param'
+
+- bytes
+
+Bytes value will not be touch and returned as it is.
+
+- int, float
+
+int or float value will be encoded to bytes string. For example:
+
+    12 -> b'12' 14.56 -> b'14.56'
+
+- bool
+
+Boolean type will be encoded to bytes string with lower case value. For example:
+
+    True -> b'true'
+    False -> b'false'
+
+- None
+
+None value will be encoded to empty bytes string. For example:
+
+    None -> b''
+
+- datetime.date
+
+Date object will be encoded to bytes string of date. Default format is
+'%Y-%m-%d'. For example:
+
+    datetime.date(2020, 1, 1) -> b'2020-01-01'
+
+- datetime.datetime
+
+Datetime object will be encoded to bytes string of datetime. Default format is
+'%Y-%m-%d %H:%M:%M'. For example:
+
+    datetime.datetime(2020, 1, 1, 9, 46, 12) -> b'2020-01-01 09:46:12'
+
+- other
+
+Other value will be converted to string with str function and encoded with ASCII
+encoding unless default function is provided.
+
+Default encoding is ASCII. If you want to use UTF-8 encoding, subclass
+ParameterEncoder and set ensure_ascii to False.
+
+Below is an example of subclassing ParameterEncoder class to encode object with
+custom type:
+
+```python
+import datetime
+
+from bmaclient import MonitoringAPI
+from bmaclient.encoder import ParameterEncoder
+
+class GPSStation(object):
+    """Custom type."""
+
+    def __init__(self, code, name):
+        self.code = code
+        self.name = name
+
+    def __str__(self):
+        return str(self.code)
+
+
+class CustomParameterEncoder(ParameterEncoder):
+    """Custom parameter encoder."""
+
+    def default(self, o):
+        """
+        Override default() method to set custom encoder.
+        """
+        if isinstance(o, GPSStation):
+            return str(o).encode('ascii')
+        return ParameterEncoder.default(self, o)
+
+
+api = MonitoringAPI(api_key='API_KEY', encoder_class=CustomParameterEncoder)
+
+pasarbubar = GPSStation('pasarbubar', 'Pasarbubar')
+grawah = GPSStation('grawah', 'Grawah')
+now = datetime.datetime.now()
+onemonthago = now - datetime.timedelta(days=30)
+
+content = api.fetch_gps_baseline(
+    station1=pasarbubar,
+    station2=grawah,
+    timestamp__gte=onemonthago,
+    timestamp__lt=now,
+)
+print(content)
+```
+
 ## Request Methods
 
 The following URL paths are relative to the base API URL
 `https://bma.cendana15.com/api/v1/`.
 
-|              API Name               |               URL Path               |      Python Method Name      |
+| API Name                            | URL Path                             | Python Method Name           |
 | ----------------------------------- | ------------------------------------ | ---------------------------- |
 | DOAS (`deprecated since 0.10.0`)    | `/doas/`                             | `fetch_doas`                 |
 | DOAS v2                             | `/doas2/{station}/`                  | `fetch_doas2`                |
