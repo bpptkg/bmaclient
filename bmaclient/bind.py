@@ -136,9 +136,9 @@ def bind_method(**config):
     """Bind API object method."""
 
     def _call_method(api, *args, **kwargs):
-        return_as_instance = kwargs.pop('return_as_instance', None)
+        _return_as_instance = kwargs.pop('_return_as_instance', None)
         method = MonitoringAPIMethod(config, api, *args, **kwargs)
-        if return_as_instance:
+        if _return_as_instance:
             return method
         return method.execute()
 
