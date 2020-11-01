@@ -29,7 +29,7 @@ class MonitoringAPI(OAuth2API):
             self.format = response_format
         else:
             raise Exception('Unsupported response format. '
-                            f"Valid formats are: {SUPPORTED_FORMATS}.")
+                            'Valid formats are: {}.'.format(SUPPORTED_FORMATS))
         self.api_key = kwargs.get('api_key')
         super(MonitoringAPI, self).__init__(**kwargs)
 

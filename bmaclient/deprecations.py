@@ -87,7 +87,8 @@ def _decorate_cls_with_warning(
 
 def deprecated_cls(version, msg, constructor='__init__'):
     message = msg or ''
-    header = f".. deprecated:: {version} {message}"
+    header = ".. deprecated:: {version} {message}".format(
+        version=version, message=message)
 
     def decorate(cls):
         return _decorate_cls_with_warning(
@@ -107,7 +108,8 @@ def deprecated(version, message=None, add_deprecation_to_docstring=True, warning
     Decorates a function and issues a deprecation warning on use.
     """
     if add_deprecation_to_docstring:
-        header = f".. deprecated:: {version} {message or ''}"
+        header = ".. deprecated:: {version} {message}".format(
+            version=version, message=message or '')
     else:
         header = None
 
@@ -118,7 +120,7 @@ def deprecated(version, message=None, add_deprecation_to_docstring=True, warning
         warning = BMADeprecationWarning
 
     if warning is BMADeprecationWarning:
-        message += f' (deprecated since: {version})'
+        message += ' (deprecated since: {})'.format(version)
 
     def decorate(fn):
         return _decorate_with_warning(
