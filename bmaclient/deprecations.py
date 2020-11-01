@@ -41,7 +41,7 @@ def _decorate_with_warning(func, wtype, msg, version, docstring_header=None):
         skip_warning = kwargs.pop('_bma_skip_warning', False)
         if not skip_warning:
             _warn_with_version(message, version, wtype, stacklevel=3)
-        return func(*args, *kwargs)
+        return func(*args, **kwargs)
 
     doc = func.__doc__ is not None and func.__doc__ or ''
     if docstring_header is not None:
