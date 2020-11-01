@@ -1,5 +1,6 @@
 from .bind import bind_method
 from .deprecations import deprecated
+from .encoder import ParameterEncoder
 from .request import OAuth2API
 
 SUPPORTED_FORMATS = ['json', 'object']
@@ -31,6 +32,7 @@ class MonitoringAPI(OAuth2API):
             raise Exception('Unsupported response format. '
                             'Valid formats are: {}.'.format(SUPPORTED_FORMATS))
         self.api_key = kwargs.get('api_key')
+        self.encoder_class = kwargs.get('encoder_class', ParameterEncoder)
         super(MonitoringAPI, self).__init__(**kwargs)
 
     def get_fetch_method(self, name):

@@ -6,7 +6,7 @@ from six.moves.urllib.parse import quote
 
 from .exceptions import APIClientError, APIError
 from .request import Request
-from .utils import encode_string, object_from_list
+from .utils import object_from_list
 
 ERROR_STATUS = {
     '400': 'HTTP_BAD_REQUEST',
@@ -66,13 +66,14 @@ class MonitoringAPIMethod(object):
             self.path = self.path.replace(variable, value)
 
     def _build_parameters(self, kwargs):
+        encoder = self.api.encoder_class()
         for key, value in six.iteritems(kwargs):
             if value is None:
                 continue
             if key in self.parameters:
                 raise APIClientError(
                     "Parameter {} already supplied".format(key))
-            self.parameters[key] = encode_string(value)
+            self.parameters[key] = encoder.encode(value)
 
     def _do_api_request(self, url, method='GET', body=None, headers=None):
         headers = headers or {}
