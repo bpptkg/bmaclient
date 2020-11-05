@@ -5,6 +5,7 @@ from httplib2 import Http
 from six.moves.urllib.parse import urlencode
 
 from .utils import encode_parameters
+from .version import __version__
 
 
 class OAuth2AuthExchangeError(Exception):
@@ -78,8 +79,10 @@ class Request(object):
     def make_request(self, url, method='GET', body=None, headers=None):
         headers = headers or {}
         if not 'User-Agent' in headers:
+            user_agent = '{} Python Client (version {})'.format(
+                self.api.api_name, __version__)
             headers.update(
-                {'User-Agent': '{} Python Client'.format(self.api.api_name),
+                {'User-Agent': user_agent,
                  'Connection': 'close'})
         if self.api.api_key:
             headers.update(

@@ -1,10 +1,13 @@
 #!/usr/bin/env python
 
+import io
 import os
+import re
 
 from setuptools import find_packages, setup
 
-__version__ = '0.9.0'
+with io.open('bmaclient/version.py', 'rt', encoding='utf-8') as f:
+    version = re.search(r"__version__ = '(.*?)'", f.read()).group(1)
 
 
 def read(filename):
@@ -13,7 +16,7 @@ def read(filename):
 
 setup(
     name='bmaclient',
-    version=__version__,
+    version=version,
     description='BPPTKG Monitoring API Python Client',
     long_description=read('README.md'),
     long_description_content_type='text/markdown',
