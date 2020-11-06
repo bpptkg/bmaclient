@@ -38,10 +38,12 @@ server resource, It's **recommended** to use OAuth2 access token.
 You can apply field lookup filtering by passing keyword arguments:
 
 ```python
-content = api.fetch_bulletin(eventdate__gte='2019-07-01 12:24:00',
-                             eventdate__lt='2019-07-11 13:14:00',
-                             eventtype='MP',
-                             nolimit=True)
+content = api.fetch_bulletin(
+    eventdate__gte='2019-07-01 12:24:00',
+    eventdate__lt='2019-07-11 13:14:00',
+    eventtype='MP',
+    nolimit=True
+)
 print(content)
 ```
 
@@ -100,58 +102,59 @@ supports:
 
 - list, tuple
 
-It will be encoded to bytes string of comma separated values. For example:
+  It will be encoded to bytes string of comma separated values. For example:
 
-    [1, 2, 3] -> b'1,2,3'
-    ['a', 'b', 'c'] -> b'a,b,c'
+      [1, 2, 3] -> b'1,2,3'
+      ['a', 'b', 'c'] -> b'a,b,c'
 
 - str
 
-str value will be encoded to bytes string. For example:
+  str value will be encoded to bytes string. For example:
 
-    'param' -> b'param'
+      'param' -> b'param'
 
 - bytes
 
-Bytes value will not be touch and returned as it is.
+  Bytes value will not be touch and returned as it is.
 
 - int, float
 
-int or float value will be encoded to bytes string. For example:
+  int or float value will be encoded to bytes string. For example:
 
-    12 -> b'12' 14.56 -> b'14.56'
+      12 -> b'12' 14.56 -> b'14.56'
 
 - bool
 
-Boolean type will be encoded to bytes string with lower case value. For example:
+  Boolean type will be encoded to bytes string with lower case value. For
+  example:
 
-    True -> b'true'
-    False -> b'false'
+      True -> b'true'
+      False -> b'false'
 
 - None
 
-None value will be encoded to empty bytes string. For example:
+  None value will be encoded to empty bytes string. For example:
 
-    None -> b''
+      None -> b''
 
 - datetime.date
 
-Date object will be encoded to bytes string of date. Default format is
-'%Y-%m-%d'. For example:
+  Date object will be encoded to bytes string of date. Default format is
+  `%Y-%m-%d`. For example:
 
-    datetime.date(2020, 1, 1) -> b'2020-01-01'
+      datetime.date(2020, 1, 1) -> b'2020-01-01'
 
 - datetime.datetime
 
-Datetime object will be encoded to bytes string of datetime. Default format is
-'%Y-%m-%d %H:%M:%M'. For example:
+  Datetime object will be encoded to bytes string of datetime. Default format is
+  `%Y-%m-%d %H:%M:%M`. For example:
 
-    datetime.datetime(2020, 1, 1, 9, 46, 12) -> b'2020-01-01 09:46:12'
+      datetime.datetime(2020, 1, 1, 9, 46, 12) -> b'2020-01-01 09:46:12'
 
 - other
 
-Other value will be converted to string with str function and encoded with ASCII
-encoding unless default function is provided.
+  Other value will be converted to string with `str` function and encoded with
+  ASCII encoding unless default function is provided.
 
 Default encoding is ASCII. If you want to use UTF-8 encoding, subclass
 ParameterEncoder and set ensure_ascii to False.
@@ -254,6 +257,12 @@ documentation](https://bma.cendana15.com/docs/).
 
 This project is maintained by Indra Rudianto. If you have any question about
 this project, you can contact him at <indrarudianto.official@gmail.com>.
+
+## Bugs Reporting
+
+If you found any bug about this library, you can raise an issue on our GitLab
+repository at the following
+[link](https://gitlab.com/bpptkg/bmaclient/-/issues).
 
 ## License
 
