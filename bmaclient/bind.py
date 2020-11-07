@@ -28,6 +28,7 @@ class MonitoringAPIMethod(object):
         self.method = config.get('method', 'GET')
         self.accepts_parameters = config.get('accepts_parameters', [])
         self.required_parameters = config.get('required_parameters', [])
+        self.doc = config.get('doc', '')
 
         self.api = api
         self.paginates = kwargs.get('page', None)
@@ -141,5 +142,7 @@ def bind_method(**config):
         if _return_as_instance:
             return method
         return method.execute()
+
+    _call_method.__doc__ = config.get('doc', '')
 
     return _call_method
