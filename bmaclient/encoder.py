@@ -19,7 +19,7 @@ class ParameterEncoder(object):
     """
     Extensible query parameter encoder.
 
-    This class encode the query parameter value to bytes string. Default
+    This class encodes the query parameter value to bytes string. Default
     behaviour is explained as follows:
 
     - list, tuple
@@ -44,7 +44,8 @@ class ParameterEncoder(object):
 
     int or float value will be encoded to bytes string. For example: ::
 
-        12 -> b'12' 14.56 -> b'14.56'
+        12 -> b'12'
+        14.56 -> b'14.56'
 
     - bool
 
@@ -79,8 +80,8 @@ class ParameterEncoder(object):
 
     - other
 
-    Other value will be converted to string with str function and encoded with
-    ASCII encoding unless default function is provided.
+    Other value will be converted to string with ``str`` function and encoded
+    with ASCII encoding unless default function is provided.
     """
 
     item_separator = ','
@@ -100,10 +101,10 @@ class ParameterEncoder(object):
         list or tuple. Default to , (comma).
 
         If date_format specified, it will be used for converting date object to
-        string. Default to %Y-%m-%d.
+        string. Default to ``%Y-%m-%d``.
 
         If datetime_format specified, it will be used for converting datetime
-        object to string. Default to %Y-%m-%d %H:%M:%S.
+        object to string. Default to ``%Y-%m-%d %H:%M:%S``.
 
         If default specified, it is a function that gets called for objects that
         can't otherwise be encoded.  It should return an encodable version of
@@ -176,7 +177,8 @@ class ParameterEncoder(object):
         if o is None:
             return self.encode_none(o)
 
-        # Boolean True is also an instance of int, so we need to check it first.
+        # Boolean True object is also an instance of int, so we need to check it
+        # first.
         if isinstance(o, bool):
             return self.encode_bool(o)
         elif isinstance(o, (int, float)):
