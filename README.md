@@ -1,7 +1,7 @@
 # bmaclient
 
 The bmaclient is official BPPTKG Monitoring API (BMA) Python client. It can be
-used to fetch various monitoring data from BMA webservice using Python.
+used to fetch various monitoring data from BMA web services using Python.
 
 ## Installation
 
@@ -33,7 +33,7 @@ print(content)
 ```
 
 Using API key is only suitable for read only request. If you want to modify
-server resource, It's **recommended** to use OAuth2 access token.
+server resources, it's **recommended** to use OAuth2 access token.
 
 You can apply field lookup filtering by passing keyword arguments:
 
@@ -47,7 +47,7 @@ content = api.fetch_bulletin(
 print(content)
 ```
 
-For the API that requires parameters to be set in the URL path, you can pass
+For the APIs that require parameters to be set in the URL path, you can pass
 those parameters in the method arguments:
 
 ```python
@@ -55,7 +55,7 @@ content = api.fetch_tiltmeter(station='selokopo', timestamp__gte='2019-07-01')
 print(content)
 ```
 
-For the API that enable search filtering, you pass `search` keyword in the
+For the APIs that enable search filtering, you pass `search` keyword in the
 method arguments:
 
 ```python
@@ -115,7 +115,7 @@ supports:
 
 - bytes
 
-  Bytes value will not be touch and returned as it is.
+  Bytes value will not be touched and returned as it is.
 
 - int, float
 
@@ -153,7 +153,7 @@ supports:
 
 - other
 
-  Other value will be converted to string with `str` function and encoded with
+  Other values will be converted to string with `str` function and encoded with
   ASCII encoding unless default function is provided.
 
 Default encoding is ASCII. If you want to use UTF-8 encoding, subclass

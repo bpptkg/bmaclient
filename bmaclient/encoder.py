@@ -1,5 +1,5 @@
 """
-Encoder module provides utilities to encode query parameter in the request.
+Encoder module provides utilities to encode query parameters in the request.
 """
 
 import datetime
@@ -17,7 +17,7 @@ def encode_basestring_ascii(s):
 
 class ParameterEncoder(object):
     """
-    Extensible query parameter encoder.
+    Extensible query parameters encoder.
 
     This class encodes the query parameter value to bytes string. Default
     behaviour is explained as follows:
@@ -80,7 +80,7 @@ class ParameterEncoder(object):
 
     - other
 
-    Other value will be converted to string with ``str`` function and encoded
+    Other values will be converted to string with ``str`` function and encoded
     with ASCII encoding unless default function is provided.
     """
 
@@ -121,6 +121,7 @@ class ParameterEncoder(object):
         if datetime_format is not None:
             self.datetime_format = datetime_format
 
+    # pylint: disable=method-hidden
     def default(self, o):
         """
         Implement this method in a subclass such that it returns an encoded
