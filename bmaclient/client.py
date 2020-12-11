@@ -46,39 +46,52 @@ class MonitoringAPI(OAuth2API):
         'This method is used as a legacy to fetch old data. '
         'See more information at: '
         'https://bma.cendana15.com/docs/apis/monitoring/doas.html',
-    )(bind_method(path='doas/'))
+    )(bind_method(
+        path='doas/',
+        doc='Fetch DOAS data (legacy).'))
 
-    fetch_gas_emission = bind_method(path='gas/emission/')
+    fetch_gas_emission = bind_method(
+        path='gas/emission/',
+        doc='Fetch Vogamos gas emission data.')
 
-    fetch_gas_temperature = bind_method(path='gas/temperature/')
+    fetch_gas_temperature = bind_method(
+        path='gas/temperature/',
+        doc='Fetch Vogamos gas temperature data.')
 
     fetch_edm = bind_method(
         path='edm/',
-        required_parameters=['benchmark', 'reflector'])
+        required_parameters=['benchmark', 'reflector'],
+        doc='Fetch EDM data.')
 
     fetch_gps_position = bind_method(
         path='gps/position/{station}/',
-        accepts_parameters=['station'])
+        accepts_parameters=['station'],
+        doc='Fetch GPS position data.')
 
     fetch_gps_baseline = bind_method(
         path='gps/baseline/',
-        required_parameters=['station1', 'station2'])
+        required_parameters=['station1', 'station2'],
+        doc='Fetch GPS baseline data.')
 
     fetch_rsam_seismic = bind_method(
         path='rsam/seismic/{station}/',
-        accepts_parameters=['station'])
+        accepts_parameters=['station'],
+        doc='Fetch RSAM seismic data.')
 
     fetch_rsam_seismic_band = bind_method(
         path='rsam/seismic/{station}/{band}/',
-        accepts_parameters=['station', 'band'])
+        accepts_parameters=['station', 'band'],
+        doc='Fetch RSAM seismic band data.')
 
     fetch_rsam_infrasound = bind_method(
         path='rsam/infrasound/{station}/',
-        accepts_parameters=['station'])
+        accepts_parameters=['station'],
+        doc='Fetch RSAM infrasound data.')
 
     fetch_rsam_infrasound_band = bind_method(
         path='rsam/infrasound/{station}/{band}/',
-        accepts_parameters=['station', 'band'])
+        accepts_parameters=['station', 'band'],
+        doc='Fetch RSAM infrasound band data.')
 
     fetch_thermal = deprecated(
         '0.10.0',
@@ -87,65 +100,118 @@ class MonitoringAPI(OAuth2API):
         'This method is used as a legacy to fetch old data. '
         'See more information at: '
         'https://bma.cendana15.com/docs/apis/monitoring/thermal.html',
-    )(bind_method(path='thermal/'))
+    )(bind_method(
+        path='thermal/',
+        doc='Fetch thermal data (legacy).'))
 
-    fetch_thermal2 = bind_method(path='thermal2/')
+    fetch_thermal2 = bind_method(
+        path='thermal2/',
+        doc='Fetch thermal data.')
 
     fetch_tiltmeter = bind_method(
         path='tiltmeter/{station}/',
-        accepts_parameters=['station'])
+        accepts_parameters=['station'],
+        doc='Fetch tiltmeter data (filtered from outliers).')
 
     fetch_tiltmeter_raw = bind_method(
         path='tiltmeter/raw/{station}/',
-        accepts_parameters=['station'])
+        accepts_parameters=['station'],
+        doc='Fetch raw tiltmeter data (may contains outliers).')
 
     fetch_tiltborehole = bind_method(
         path='tiltborehole/{station}/',
-        accepts_parameters=['station'])
+        accepts_parameters=['station'],
+        doc='Fetch tiltmeter borehole data.')
 
     fetch_tiltmeter_tlr = bind_method(
         path='tiltmeter/tlr/{station}/',
-        accepts_parameters=['station'])
+        accepts_parameters=['station'],
+        doc='Fetch tiltmeter TLR data.')
 
-    fetch_seismicity = bind_method(path='seismicity/')
+    fetch_seismicity = bind_method(
+        path='seismicity/',
+        doc='Fetch seismicity data.')
 
-    fetch_bulletin = bind_method(path='bulletin/')
+    fetch_bulletin = bind_method(
+        path='bulletin/',
+        doc='Fetch seismic bulletin data.')
 
-    fetch_energy = bind_method(path='energy/')
+    fetch_energy = bind_method(
+        path='energy/',
+        doc='Fetch seismic energy data.')
 
-    fetch_magnitude = bind_method(path='magnitude/')
+    fetch_magnitude = bind_method(
+        path='magnitude/',
+        doc='Fetch seismic magnitude data.')
 
-    fetch_slope = bind_method(path='slope/')
+    fetch_slope = bind_method(
+        path='slope/',
+        doc='Fetch EDM slope distance correction data.')
 
-    slope = bind_method(path='slope/{pk}/',
-                        accepts_parameters=['pk'])
+    slope = bind_method(
+        path='slope/{pk}/',
+        accepts_parameters=['pk'],
+        doc='Fetch EDM slope distance correction data for certain ID.')
 
-    create_slope = bind_method(path='slope/', method='POST')
+    create_slope = bind_method(
+        path='slope/',
+        method='POST',
+        doc='Create EDM slope distance correction.')
 
     replace_slope = bind_method(
-        path='slope/{pk}/', method='PUT', accepts_parameters=['pk'])
+        path='slope/{pk}/',
+        method='PUT',
+        accepts_parameters=['pk'],
+        doc='Replace certain EDM slope distance correction.')
 
     update_slope = bind_method(
-        path='slope/{pk}/', method='PATCH', accepts_parameters=['pk'])
+        path='slope/{pk}/',
+        method='PATCH',
+        accepts_parameters=['pk'],
+        doc='Update certain EDM slope distance correction.')
 
     delete_slope = bind_method(
-        path='slope/{pk}/', method='DELETE', accepts_parameters=['pk'])
+        path='slope/{pk}/',
+        method='DELETE',
+        accepts_parameters=['pk'],
+        doc='Delete certain EDM slope distance correction.')
 
-    search_slope = bind_method(path='slope/', required_parameters=['search'])
+    search_slope = bind_method(
+        path='slope/',
+        required_parameters=['search'],
+        doc='Search for EDM slope distance correction.')
 
-    fetch_users = bind_method(path='users/')
+    fetch_users = bind_method(
+        path='users/',
+        doc='Fetch user data.')
 
-    user = bind_method(path='users/{pk}/', accepts_parameters=['pk'])
+    user = bind_method(
+        path='users/{pk}/',
+        accepts_parameters=['pk'],
+        doc='Get info for certain user ID.')
 
-    search_users = bind_method(path='users/', required_parameters=['search'])
+    search_users = bind_method(
+        path='users/',
+        required_parameters=['search'],
+        doc='Search for users.')
 
-    fetch_meteorology = bind_method(path='meteorology/')
+    fetch_meteorology = bind_method(
+        path='meteorology/',
+        doc='Fetch meteorology data.')
 
-    fetch_windrose = bind_method(path='meteorology/windrose/')
+    fetch_windrose = bind_method(
+        path='meteorology/windrose/',
+        doc='Fetch wind rose data.')
 
-    fetch_rainfall = bind_method(path='meteorology/rainfall/')
+    fetch_rainfall = bind_method(
+        path='meteorology/rainfall/',
+        doc='Fetch rainfall data.')
 
-    fetch_topo = bind_method(path='topo/')
+    fetch_topo = bind_method(
+        path='topo/',
+        doc='Fetch topography data.')
 
-    fetch_doas2 = bind_method(path='doas2/{station}/',
-                              accepts_parameters=['station'])
+    fetch_doas2 = bind_method(
+        path='doas2/{station}/',
+        accepts_parameters=['station'],
+        doc='Fetch DOAS data.')
