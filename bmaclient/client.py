@@ -43,6 +43,7 @@ class MonitoringAPI(OAuth2API):
     fetch_doas = deprecated(
         '0.10.0',
         'fetch_doas method is deprecated. Use fetch_doas2 method instead. '
+        'This method is used as a legacy to fetch old data. '
         'See more information at: '
         'https://bma.cendana15.com/docs/apis/monitoring/doas.html',
     )(bind_method(path='doas/'))
@@ -83,6 +84,7 @@ class MonitoringAPI(OAuth2API):
         '0.10.0',
         'fetch_thermal method is deprecated. '
         'Use fetch_thermal2 method instead. '
+        'This method is used as a legacy to fetch old data. '
         'See more information at: '
         'https://bma.cendana15.com/docs/apis/monitoring/thermal.html',
     )(bind_method(path='thermal/'))
