@@ -28,7 +28,7 @@ setup(
     author='Indra Rudianto',
     author_email='indrarudianto.official@gmail.com',
     url='https://gitlab.com/bpptkg/bmaclient',
-    zip_safe=True,
+    zip_safe=False,
     packages=find_packages(exclude=['tests', 'docs']),
     python_requires='>=3.5',
     classifiers=[
@@ -41,5 +41,6 @@ setup(
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
     ]
 )
