@@ -47,3 +47,29 @@ def encode_parameters(kwargs):
             continue
         params[key] = encode_string(value)
     return params
+
+
+def get_api_key_from_file(path, strict=False):
+    """
+    Read API key from file.
+
+    The file can contains a comment that starts with hash character (#).
+    Otherwise, the first line that is not a comment would be treated as API key
+    value. It also returns empty string if file is empty.
+
+    If strict is True, raise ValueError when API key value is empty.
+    """
+    if not os.path.isfile(path):
+        raise ValueError('File is not exists: {}'.format(path))
+
+    COMMENT = '#'
+    with open(path, 'r') as f:
+        while True:
+            line = f.readline().strip()
+            if not line:
+                break
+            if not line.startswith(COMMENT):
+                return line
+    if strict:
+        raise ValueError('Could not get API key from file: {}'.format(path))
+    return ''
