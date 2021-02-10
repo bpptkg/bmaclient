@@ -80,19 +80,24 @@ def main():
     api.fetch_rsam_infrasound_band(station='kendit', band='band3', page=1)
 
     print('Running: fetch_rsam_seismic')
-    api.fetch_rsam_seismic(station='kendit')
+    api.fetch_rsam_seismic(station='pasarbubar')
     print('Running: fetch_rsam_seismic:page')
-    api.fetch_rsam_seismic(station='kendit', page=1)
+    api.fetch_rsam_seismic(station='pasarbubar', page=1)
 
     print('Running: fetch_rsam_seismic_band')
-    api.fetch_rsam_seismic_band(station='kendit', band='band3')
+    api.fetch_rsam_seismic_band(station='pasarbubar', band='band3')
     print('Running: fetch_rsam_seismic_band:page')
-    api.fetch_rsam_seismic_band(station='kendit', band='band3', page=1)
+    api.fetch_rsam_seismic_band(station='pasarbubar', band='band3', page=1)
 
     print('Running: fetch_seismicity')
     api.fetch_seismicity()
     print('Running: fetch_seismicity:page')
     api.fetch_seismicity(page=1)
+
+    print('Running: fetch_seismicity_archive')
+    api.fetch_seismicity_archive()
+    print('Running: fetch_seismicity_archive:page')
+    api.fetch_seismicity_archive(page=1)
 
     print('Running: fetch_slope')
     api.fetch_slope()
@@ -147,10 +152,23 @@ def main():
     print('Running: fetch_topo:model')
     api.fetch_topo(model='m1000')
 
+    print('Running: fetch_topo_profile')
+    api.fetch_topo_profile()
+    print('Running: fetch_topo_profile:model')
+    api.fetch_topo_profile(model='p1001')
+
     print('Running: fetch_doas2')
     api.fetch_doas2(station='babadan')
     print('Running: fetch_doas2:page')
     api.fetch_doas2(station='babadan', page=1)
+
+    print('Running: fetch_csdr')
+    api.fetch_csdr(benchmark='BAB0', reflector='RB1',
+                   start_at='2021-01-01', end_at='2021-01-10')
+
+    print('Running: fetch_csdr:page')
+    api.fetch_csdr(benchmark='BAB0', reflector='RB1', page=1,
+                   start_at='2021-01-01', end_at='2021-01-10')
 
     print('All requests performed successfully.')
 
