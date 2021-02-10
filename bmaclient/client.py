@@ -132,6 +132,10 @@ class MonitoringAPI(OAuth2API):
         path='seismicity/',
         doc='Fetch seismicity data.')
 
+    fetch_seismicity_archive = bind_method(
+        path='seismicity/archive/',
+        doc='Fetch seismicity archive data.')
+
     fetch_bulletin = bind_method(
         path='bulletin/',
         doc='Fetch seismic bulletin data.')
@@ -211,7 +215,15 @@ class MonitoringAPI(OAuth2API):
         path='topo/',
         doc='Fetch topography data.')
 
+    fetch_topo_profile = bind_method(
+        path='topo/profile/',
+        doc='Fetch topography profile data.')
+
     fetch_doas2 = bind_method(
         path='doas2/{station}/',
         accepts_parameters=['station'],
         doc='Fetch DOAS data.')
+
+    fetch_csdr = bind_method(
+        path='edm/csdr/',
+        doc='Fetch EDM CSD and rate.')
