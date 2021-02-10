@@ -213,11 +213,12 @@ print(content)
 The following URL paths are relative to the base API URL
 `https://bma.cendana15.com/api/v1/`.
 
-| API Name                            | URL Path                             | Python Method Name           |
+|              API Name               |               URL Path               |      Python Method Name      |
 | ----------------------------------- | ------------------------------------ | ---------------------------- |
 | DOAS (`deprecated since 0.10.0`)    | `/doas/`                             | `fetch_doas`                 |
 | DOAS v2                             | `/doas2/{station}/`                  | `fetch_doas2`                |
 | EDM                                 | `/edm/`                              | `fetch_edm`                  |
+| EDM CSD and Rate                    | `/edm/csdr/`                         | `fetch_csdr`                 |
 | Gas Emission                        | `/gas/emission/`                     | `fetch_gas_emission`         |
 | Gas Temperature                     | `/gas/temperature/`                  | `fetch_gas_temperature`      |
 | GPS Positon                         | `/gps/position/`                     | `fetch_gps_position`         |
@@ -236,7 +237,9 @@ The following URL paths are relative to the base API URL
 | Tiltmeter Borehole                  | `/tiltborehole/{station}/`           | `fetch_tiltborehole`         |
 | Tiltmeter TLR                       | `/tiltmeter/tlr/{station}/`          | `fetch_tiltmeter_tlr`        |
 | Topography Data                     | `/topo/`                             | `fetch_topo`                 |
+| Topography Profile                  | `/topo/profile/`                     | `fetch_topo_profile`         |
 | Seismicity                          | `/seismicity`                        | `fetch_seismicity`           |
+| Seismicity Archive                  | `/seismicity/archive/`               | `fetch_seismicity_archive`   |
 | Seismic Bulletin                    | `/bulletin/`                         | `fetch_bulletin`             |
 | Seismic Energy                      | `/energy/`                           | `fetch_energy`               |
 | Seismic Magnitude                   | `/magnitude/`                        | `fetch_magnitude`            |
