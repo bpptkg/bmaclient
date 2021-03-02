@@ -136,6 +136,10 @@ class MonitoringAPI(OAuth2API):
         path='seismicity/archive/',
         doc='Fetch seismicity archive data.')
 
+    fetch_seismicity_cluster = bind_method(
+        path='seismicity/cluster/',
+        doc='Fetch seismicity cluster data.')
+
     fetch_bulletin = bind_method(
         path='bulletin/',
         doc='Fetch seismic bulletin data.')

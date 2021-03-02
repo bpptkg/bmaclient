@@ -101,8 +101,6 @@ def main():
 
     print('Running: fetch_slope')
     api.fetch_slope()
-    print('Running: fetch_slope:page')
-    api.fetch_slope(page=1)
 
     print('Running: fetch_thermal')
     api.fetch_thermal()
@@ -169,6 +167,15 @@ def main():
     print('Running: fetch_csdr:page')
     api.fetch_csdr(benchmark='BAB0', reflector='RB1', page=1,
                    start_at='2021-01-01', end_at='2021-01-10')
+
+    print('Running: fetch_seismicity_cluster')
+    api.fetch_seismicity_cluster(eventdate__gte='2021-02-01',
+                                 eventdate__lt='2021-02-10', cluster=40)
+
+    print('Running: fetch_seismicity_cluster:page')
+    api.fetch_seismicity_cluster(eventdate__gte='2021-02-01',
+                                 eventdate__lt='2021-02-10', cluster=40,
+                                 page=1)
 
     print('All requests performed successfully.')
 

@@ -240,6 +240,7 @@ The following URL paths are relative to the base API URL
 | Topography Profile                  | `/topo/profile/`                     | `fetch_topo_profile`         |
 | Seismicity                          | `/seismicity`                        | `fetch_seismicity`           |
 | Seismicity Archive                  | `/seismicity/archive/`               | `fetch_seismicity_archive`   |
+| Seismicity Cluster                  | `/seismicity/cluster/`               | `fetch_seismicity_cluster`   |
 | Seismic Bulletin                    | `/bulletin/`                         | `fetch_bulletin`             |
 | Seismic Energy                      | `/energy/`                           | `fetch_energy`               |
 | Seismic Magnitude                   | `/magnitude/`                        | `fetch_magnitude`            |
