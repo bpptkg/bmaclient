@@ -208,6 +208,36 @@ content = api.fetch_gps_baseline(
 print(content)
 ```
 
+## Extending API Class
+
+If you want to extend API class, for example fetching new endpoint that the
+method is not available in the library yet, you can see the following example:
+
+```python
+from bmaclient import MonitoringAPI
+from bmaclient.bind import bind_method
+
+
+class MyMonitoringAPI(MonitoringAPI):
+
+  def __init__(self, **kwargs):
+    super(MyMonitoringAPI, self).__init__(**kwargs)
+
+  fetch_gps_baseline = bind_method(
+      path='gps/baseline/',
+      required_parameters=['station1', 'station2'],
+      doc='Fetch GPS baseline data.')
+
+  fetch_rsam_seismic = bind_method(
+      path='rsam/seismic/{station}/',
+      accepts_parameters=['station'],
+      doc='Fetch RSAM seismic data.')
+
+  fetch_cluster_dict = bind_method(
+      path='cluster/dict/',
+      doc='Fetch cluster dictionary.')
+```
+
 ## Request Methods
 
 The following URL paths are relative to the base API URL
