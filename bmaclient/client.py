@@ -231,3 +231,11 @@ class MonitoringAPI(OAuth2API):
     fetch_csdr = bind_method(
         path='edm/csdr/',
         doc='Fetch EDM CSD and rate.')
+
+    fetch_cluster_dict = bind_method(
+        path='cluster/dict/',
+        doc='Fetch cluster dictionary.')
+
+    fetch_cluster_seisgroup = bind_method(
+        path='cluster/seisgroup/',
+        doc='Fetch cluster seismicity group.')

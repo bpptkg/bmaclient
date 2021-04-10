@@ -215,6 +215,8 @@ The following URL paths are relative to the base API URL
 
 |              API Name               |               URL Path               |      Python Method Name      |
 | ----------------------------------- | ------------------------------------ | ---------------------------- |
+| Cluster Dictionary                  | `/cluster/dict/`                     | `fetch_cluster_dict`         |
+| Cluster Seismicity Group            | `/cluster/seisgroup/`                | `fetch_cluster_seisgroup`    |
 | DOAS (`deprecated since 0.10.0`)    | `/doas/`                             | `fetch_doas`                 |
 | DOAS v2                             | `/doas2/{station}/`                  | `fetch_doas2`                |
 | EDM                                 | `/edm/`                              | `fetch_edm`                  |
