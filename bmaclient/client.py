@@ -239,3 +239,7 @@ class MonitoringAPI(OAuth2API):
     fetch_cluster_seisgroup = bind_method(
         path='cluster/seisgroup/',
         doc='Fetch cluster seismicity group.')
+
+    fetch_equivalent_energy = bind_method(
+        path='equivalent-energy/',
+        doc='Fetch equivalent energy.')

@@ -251,6 +251,7 @@ The following URL paths are relative to the base API URL
 | DOAS v2                             | `/doas2/{station}/`                  | `fetch_doas2`                |
 | EDM                                 | `/edm/`                              | `fetch_edm`                  |
 | EDM CSD and Rate                    | `/edm/csdr/`                         | `fetch_csdr`                 |
+| Equivalent Energy                   | `/equivalent-energy/`                | `fetch_equivalent_energy`    |
 | Gas Emission                        | `/gas/emission/`                     | `fetch_gas_emission`         |
 | Gas Temperature                     | `/gas/temperature/`                  | `fetch_gas_temperature`      |
 | GPS Positon                         | `/gps/position/`                     | `fetch_gps_position`         |
