@@ -42,15 +42,15 @@ class MonitoringAPIMethod(object):
     def _check_required_parameters(self, kwargs):
         for variable in self.required_parameters:
             if not kwargs.get(variable):
-                raise APIClientError('Parameter {} is required'.format(
+                raise APIClientError("Parameter '{}' is required.".format(
                     variable))
 
     def _check_accepts_parameters(self, kwargs):
         for variable in self.accepts_parameters:
             if not kwargs.get(variable):
                 raise APIClientError(
-                    'Parameter {} must be set before '
-                    'calling the method'.format(variable))
+                    "Parameter '{}' must be set before "
+                    "calling the method.".format(variable))
 
     def _build_path(self):
         for variable in re_path_template.findall(self.path):
@@ -73,7 +73,7 @@ class MonitoringAPIMethod(object):
                 continue
             if key in self.parameters:
                 raise APIClientError(
-                    "Parameter {} already supplied".format(key))
+                    "Parameter '{}' already supplied.".format(key))
             self.parameters[key] = encoder.encode(value)
 
     def _do_api_request(self, url, method='GET', body=None, headers=None):
@@ -92,7 +92,7 @@ class MonitoringAPIMethod(object):
                 content_obj = json.loads(content.decode('utf-8'))
             except ValueError:
                 raise APIClientError(
-                    "Unable to parse response, not valid JSON",
+                    "Unable to parse response, not valid JSON.",
                     status_code=response['status'])
         else:
             content_obj = None
