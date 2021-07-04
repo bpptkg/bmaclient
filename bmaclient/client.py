@@ -243,3 +243,13 @@ class MonitoringAPI(OAuth2API):
     fetch_equivalent_energy = bind_method(
         path='equivalent-energy/',
         doc='Fetch equivalent energy.')
+
+    fetch_lava_domes = bind_method(
+        path='lava-domes/',
+        required_parameters=['location', 'start', 'end'],
+        doc='Fetch lava domes.')
+
+    fetch_rfap_distance = bind_method(
+        path='rfap-distance/',
+        required_parameters=['start', 'end'],
+        doc='Fetch Rockfall-AwanPanas (RF-AP) distance.')
