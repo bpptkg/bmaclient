@@ -1,7 +1,7 @@
 # bmaclient
 
-The bmaclient is official BPPTKG Monitoring API (BMA) Python client. It can be
-used to fetch various monitoring data from BMA web services using Python.
+bmaclient is official BPPTKG Monitoring API (BMA) Python client. It can be used
+to fetch various monitoring data from BMA web services using Python.
 
 ## Installation
 
@@ -68,9 +68,9 @@ print(content)
 
 ## Changing the API Host
 
-Starting from version 0.9.0, default API host for the libary is
+Starting from version 0.9.0, default API host for the library is
 `bma.cendana15.com` and using `https` protocol. If you want to change the host,
-for example using other hostname or so, you can write the code as follow:
+for example using other hostname or so, you can write the code as follows:
 
 ```python
 from bmaclient import MonitoringAPI
@@ -154,7 +154,7 @@ supports:
 - other
 
   Other values will be converted to string with `str` function and encoded with
-  ASCII encoding unless default function is provided.
+  ASCII encoding unless default function provided.
 
 Default encoding is ASCII. If you want to use UTF-8 encoding, subclass
 ParameterEncoder and set ensure_ascii to False.
