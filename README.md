@@ -292,19 +292,13 @@ The following URL paths are relative to the base API URL
 For more information about BMA, see [the BMA
 documentation](https://bma.cendana15.com/docs/).
 
-## Support
-
-This project is maintained by Indra Rudianto. If you have any question about
-this project, you can contact him at <indrarudianto.official@gmail.com>.
-
 ## Bugs Reporting
 
 If you found any bug about this library, you can raise an issue on our GitLab
-repository at the following
-[link](https://gitlab.com/bpptkg/bmaclient/-/issues).
+repository at the following [link](https://github.com/bpptkg/bmaclient/issues).
 
 ## License
 
 By contributing to the project, you agree that your contributions will be
 licensed under its MIT license. See
-[LICENSE](https://gitlab.com/bpptkg/bmaclient/blob/master/LICENSE) for details.
+[LICENSE](https://github.com/bpptkg/bmaclient/blob/master/LICENSE) for details.
