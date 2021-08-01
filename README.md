@@ -1,5 +1,7 @@
 # bmaclient
 
+![GitHub Badge](https://github.com/bpptkg/bmaclient/workflows/Build/badge.svg)
+
 bmaclient is official BPPTKG Monitoring APIs (BMA) Python client. It can be used
 to fetch various monitoring data from BMA web services using Python.
 
