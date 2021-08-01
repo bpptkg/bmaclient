@@ -296,8 +296,8 @@ documentation](https://bma.cendana15.com/docs/).
 
 ## Bugs Reporting
 
-If you found any bug about this library, you can raise an issue on our GitLab
-repository at the following [link](https://github.com/bpptkg/bmaclient/issues).
+If you found any bug about this library, you can raise an issue at the following
+[link](https://github.com/bpptkg/bmaclient/issues).
 
 ## License
 
