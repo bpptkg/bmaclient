@@ -17,7 +17,7 @@ def read(filename):
 setup(
     name='bmaclient',
     version=version,
-    description='BPPTKG Monitoring API Python Client',
+    description='BPPTKG Monitoring APIs Python Client',
     long_description=read('README.md'),
     long_description_content_type='text/markdown',
     license='MIT',
