@@ -242,29 +242,41 @@ class MonitoringAPI(OAuth2API):
 
     fetch_equivalent_energy = bind_method(
         path='equivalent-energy/',
-        doc='Fetch equivalent energy.')
+        doc='Fetch equivalent energy.',
+        since_version='0.12.0',
+        requires_bma_version='1.9.0')
 
     fetch_lava_domes = bind_method(
         path='lava-domes/',
         required_parameters=['location', 'start', 'end'],
-        doc='Fetch lava domes.')
+        doc='Fetch lava domes.',
+        since_version='0.13.0',
+        requires_bma_version='1.9.0')
 
     fetch_rfap_distance = bind_method(
         path='rfap-distance/',
         required_parameters=['start', 'end'],
-        doc='Fetch Rockfall-AwanPanas (RF-AP) distance.')
+        doc='Fetch Rockfall-AwanPanas (RF-AP) distance.',
+        since_version='0.13.0',
+        requires_bma_version='1.9.0')
 
     fetch_rfap_rose = bind_method(
         path='rfap-rose/',
         required_parameters=['start', 'end'],
-        doc='Fetch Rockfall-AwanPanas (RF-AP) rose.')
+        doc='Fetch Rockfall-AwanPanas (RF-AP) rose.',
+        since_version='0.14.0',
+        requires_bma_version='1.9.0')
 
     fetch_rfap_distdir = bind_method(
         path='rfap-distdir/',
         required_parameters=['start', 'end'],
-        doc='Fetch Rockfall-AwanPanas (RF-AP) distance direction.')
+        doc='Fetch Rockfall-AwanPanas (RF-AP) distance direction.',
+        since_version='0.14.0',
+        requires_bma_version='1.9.0')
 
     fetch_rfap_type = bind_method(
         path='rfap-type/',
         required_parameters=['start', 'end'],
-        doc='Fetch Rockfall-AwanPanas (RF-AP) type.')
+        doc='Fetch Rockfall-AwanPanas (RF-AP) type.',
+        since_version='0.14.0',
+        requires_bma_version='1.9.0')
