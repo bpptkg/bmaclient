@@ -304,6 +304,8 @@ If you found any bug about this library, you can raise an issue at the following
 
 ## License
 
+Copyright (c) 2019-present BPPTKG
+
 By contributing to the project, you agree that your contributions will be
 licensed under its MIT license. See
 [LICENSE](https://github.com/bpptkg/bmaclient/blob/master/LICENSE) for details.
