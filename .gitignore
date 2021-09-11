@@ -11,6 +11,7 @@ bmaclient.egg-info/
 .pytest_cache/
 .coverage
 run*.py
+.tox/
 
 # Virtual environment folders
 venv/
