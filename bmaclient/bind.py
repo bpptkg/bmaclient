@@ -30,6 +30,9 @@ class MonitoringAPIMethod(object):
         self.required_parameters = config.get('required_parameters', [])
         self.doc = config.get('doc', '')
 
+        self.since_version = config.get('since_version', '')
+        self.requires_bma_version = config.get('requires_bma_version', '')
+
         self.api = api
         self.paginates = kwargs.get('page', None)
         self.parameters = {}
