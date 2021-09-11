@@ -34,6 +34,16 @@ class BindMethodTest(unittest.TestCase):
         with self.assertRaises(APIClientError):
             self.api.fetch_tiltmeter(_return_as_instance=True)
 
+    def test_since_version(self):
+        method = self.api.fetch_rfap_distdir(
+            start='2021-08-01', end='2021-08-02', _return_as_instance=True)
+        self.assertEqual(method.since_version, '0.14.0')
+
+    def test_requires_bma_version(self):
+        method = self.api.fetch_rfap_distdir(
+            start='2021-08-01', end='2021-08-02', _return_as_instance=True)
+        self.assertEqual(method.requires_bma_version, '1.9.0')
+
 
 if __name__ == '__main__':
     unittest.main()
