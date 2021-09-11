@@ -135,6 +135,9 @@ class MonitoringAPIMethod(object):
             return object_from_list(content)
         return content
 
+    def __call__(self):
+        return self.execute()
+
 
 def bind_method(**config):
     """Bind API object method."""
