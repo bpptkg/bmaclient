@@ -253,3 +253,18 @@ class MonitoringAPI(OAuth2API):
         path='rfap-distance/',
         required_parameters=['start', 'end'],
         doc='Fetch Rockfall-AwanPanas (RF-AP) distance.')
+
+    fetch_rfap_rose = bind_method(
+        path='rfap-rose/',
+        required_parameters=['start', 'end'],
+        doc='Fetch Rockfall-AwanPanas (RF-AP) rose.')
+
+    fetch_rfap_distdir = bind_method(
+        path='rfap-distdir/',
+        required_parameters=['start', 'end'],
+        doc='Fetch Rockfall-AwanPanas (RF-AP) distance direction.')
+
+    fetch_rfap_type = bind_method(
+        path='rfap-type/',
+        required_parameters=['start', 'end'],
+        doc='Fetch Rockfall-AwanPanas (RF-AP) type.')
