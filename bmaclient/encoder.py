@@ -8,11 +8,11 @@ from .utils import encode_string
 
 
 def encode_basestring(s):
-    return encode_string(s, encoding='utf-8')
+    return encode_string(s, encoding="utf-8")
 
 
 def encode_basestring_ascii(s):
-    return encode_string(s, encoding='ascii')
+    return encode_string(s, encoding="ascii")
 
 
 class ParameterEncoder(object):
@@ -84,12 +84,19 @@ class ParameterEncoder(object):
     with ASCII encoding unless default function is provided.
     """
 
-    item_separator = ','
-    date_format = '%Y-%m-%d'
-    datetime_format = '%Y-%m-%d %H:%M:%S'
+    item_separator = ","
+    date_format = "%Y-%m-%d"
+    datetime_format = "%Y-%m-%d %H:%M:%S"
 
-    def __init__(self, *, ensure_ascii=True, separator=None, date_format=None,
-                 datetime_format=None, default=None):
+    def __init__(
+        self,
+        *,
+        ensure_ascii=True,
+        separator=None,
+        date_format=None,
+        datetime_format=None,
+        default=None
+    ):
         """
         Constructor of ParameterEncoder, with defaults.
 
@@ -128,8 +135,9 @@ class ParameterEncoder(object):
         object for ``o``, or calls the base implementation (to raise a
         ``TypeError``).
         """
-        raise TypeError('Object of type {} '
-                        'is not serializable.'.format(o.__class__.__name__))
+        raise TypeError(
+            "Object of type {} " "is not serializable.".format(o.__class__.__name__)
+        )
 
     def encode(self, o):
         """
@@ -137,7 +145,7 @@ class ParameterEncoder(object):
         """
         if isinstance(o, (list, tuple)):
             obj = [self._iterencode(i) for i in o]
-            separator = bytes(self.item_separator, encoding='ascii')
+            separator = bytes(self.item_separator, encoding="ascii")
             obj = separator.join(obj)
             if self.ensure_ascii:
                 return encode_basestring_ascii(obj)
@@ -154,7 +162,7 @@ class ParameterEncoder(object):
         return o
 
     def encode_none(self, o):
-        return b''
+        return b""
 
     def encode_bool(self, o):
         return encode_basestring_ascii(o).lower()

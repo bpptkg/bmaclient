@@ -5,9 +5,7 @@ class ApiModel(object):
 
     @classmethod
     def object_from_dict(cls, entry):
-        entry_dict = dict([
-            (str(key), value) for key, value in entry.items()
-        ])
+        entry_dict = dict([(str(key), value) for key, value in entry.items()])
         return cls(**entry_dict)
 
 

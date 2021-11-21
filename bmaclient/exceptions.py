@@ -23,6 +23,7 @@ class BMADeprecationWarning(DeprecationWarning):
     """
     Issued for usage of deprecated APIs.
     """
+
     deprecated_since = None
 
 
@@ -31,4 +32,5 @@ class BMAPendingDeprecationWarning(PendingDeprecationWarning):
     A similar warning as :class:`bmaclient.exceptions.BMADeprecationWarning`,
     but for pending deprecation.
     """
+
     deprecated_since = None

@@ -5,7 +5,7 @@ import six
 from .models import DataModel
 
 
-def encode_string(s, encoding='utf-8', errors='strict'):
+def encode_string(s, encoding="utf-8", errors="strict"):
     """Encode string s to bytes."""
     if isinstance(s, bytes):
         return s
@@ -21,21 +21,19 @@ def object_from_list(entry):
     return [DataModel(**item) for item in entry]
 
 
-def get_api_key(name='API_KEY'):
+def get_api_key(name="API_KEY"):
     """Read API key from OS environment variables."""
     API_KEY = os.environ.get(name)
     if API_KEY is None:
-        raise ValueError(
-            'Could not get {} from OS environment variables'.format(name))
+        raise ValueError("Could not get {} from OS environment variables".format(name))
     return API_KEY
 
 
-def get_access_token(name='ACCESS_TOKEN'):
+def get_access_token(name="ACCESS_TOKEN"):
     """Read OAuth2 access token from OS environment variables."""
     ACCESS_TOKEN = os.environ.get(name)
     if ACCESS_TOKEN is None:
-        raise ValueError(
-            'Could not get {} from OS environment variables'.format(name))
+        raise ValueError("Could not get {} from OS environment variables".format(name))
     return ACCESS_TOKEN
 
 
@@ -60,10 +58,10 @@ def get_api_key_from_file(path, strict=False):
     If strict is True, raise ValueError when API key value is empty.
     """
     if not os.path.isfile(path):
-        raise ValueError('File is not exists: {}'.format(path))
+        raise ValueError("File is not exists: {}".format(path))
 
-    COMMENT = '#'
-    with open(path, 'r') as f:
+    COMMENT = "#"
+    with open(path, "r") as f:
         while True:
             line = f.readline().strip()
             if not line:
@@ -71,5 +69,5 @@ def get_api_key_from_file(path, strict=False):
             if not line.startswith(COMMENT):
                 return line
     if strict:
-        raise ValueError('Could not get API key from file: {}'.format(path))
-    return ''
+        raise ValueError("Could not get API key from file: {}".format(path))
+    return ""
