@@ -184,6 +184,19 @@ def main():
         eventdate__gte="2021-02-01", eventdate__lt="2021-02-10", cluster=40, page=1
     )
 
+    print("Running: fetch_magnetic_imogiri")
+    api.fetch_magnetic_imogiri(
+        timestamp__gte="2022-06-10",
+        timestamp__lt="2022-06-11",
+    )
+
+    print("Running: fetch_magnetic_imogiri:page")
+    api.fetch_magnetic_imogiri(
+        timestamp__gte="2022-06-10",
+        timestamp__lt="2022-06-11",
+        page=1,
+    )
+
     print("All requests performed successfully.")
 
 
