@@ -192,7 +192,7 @@ one_month_ago = now - datetime.timedelta(days=30)
 data = api.fetch_gps_baseline(
     station1=pasarbubar,
     station2=grawah,
-    timestamp__gte=onemonthago,
+    timestamp__gte=one_month_ago,
     timestamp__lt=now,
     nolimit=True,
 )
