@@ -20,8 +20,8 @@ For example, using API key:
 from bmaclient import MonitoringAPI
 
 api = MonitoringAPI(api_key='API_KEY')
-content = api.fetch_bulletin()
-print(content)
+data = api.fetch_bulletin()
+print(data)
 ```
 
 Or using access token:
@@ -30,8 +30,8 @@ Or using access token:
 from bmaclient import MonitoringAPI
 
 api = MonitoringAPI(access_token='ACCESS_TOKEN')
-content = api.fetch_bulletin()
-print(content)
+data = api.fetch_bulletin()
+print(data)
 ```
 
 Using API key is only suitable for read only request. If you want to modify
@@ -40,32 +40,21 @@ server resources, it's **recommended** to use OAuth2 access token.
 You can apply field lookup filtering by passing keyword arguments:
 
 ```python
-content = api.fetch_bulletin(
+data = api.fetch_bulletin(
     eventdate__gte='2019-07-01 12:24:00',
     eventdate__lt='2019-07-11 13:14:00',
     eventtype='MP',
     nolimit=True
 )
-print(content)
+print(data)
 ```
 
 For the APIs that require parameters to be set in the URL path, you can pass
 those parameters in the method arguments:
 
 ```python
-content = api.fetch_tiltmeter(station='selokopo', timestamp__gte='2019-07-01')
-print(content)
-```
-
-For the APIs that enable search filtering, you pass `search` keyword in the
-method arguments:
-
-```python
-content = api.search_slope(search='RB2')
-print(content)
-
-content = api.search_users(search='indra')
-print(content)
+data = api.fetch_tiltmeter(station='selokopo', timestamp__gte='2019-07-01')
+print(data)
 ```
 
 ## Changing the API Host
@@ -198,16 +187,16 @@ api = MonitoringAPI(api_key='API_KEY', encoder_class=CustomParameterEncoder)
 pasarbubar = GPSStation('pasarbubar', 'Pasarbubar')
 grawah = GPSStation('grawah', 'Grawah')
 now = datetime.datetime.now()
-onemonthago = now - datetime.timedelta(days=30)
+one_month_ago = now - datetime.timedelta(days=30)
 
-content = api.fetch_gps_baseline(
+data = api.fetch_gps_baseline(
     station1=pasarbubar,
     station2=grawah,
     timestamp__gte=onemonthago,
     timestamp__lt=now,
     nolimit=True,
 )
-print(content)
+print(data)
 ```
 
 ## Extending API Class
@@ -245,54 +234,55 @@ class MyMonitoringAPI(MonitoringAPI):
 The following URL paths are relative to the base API URL
 `https://bma.cendana15.com/api/v1/`.
 
-|                        API Name                         |               URL Path               |      Python Method Name      |
-| ------------------------------------------------------- | ------------------------------------ | ---------------------------- |
-| Cluster Dictionary                                      | `/cluster/dict/`                     | `fetch_cluster_dict`         |
-| Cluster Seismicity Group                                | `/cluster/seisgroup/`                | `fetch_cluster_seisgroup`    |
-| DOAS (`deprecated since v0.10.0`)                       | `/doas/`                             | `fetch_doas`                 |
-| DOAS v2                                                 | `/doas2/{station}/`                  | `fetch_doas2`                |
-| EDM                                                     | `/edm/`                              | `fetch_edm`                  |
-| EDM CSD and Rate                                        | `/edm/csdr/`                         | `fetch_csdr`                 |
-| Equivalent Energy (`since v0.12.0`)                     | `/equivalent-energy/`                | `fetch_equivalent_energy`    |
-| Gas Emission                                            | `/gas/emission/`                     | `fetch_gas_emission`         |
-| Gas Temperature                                         | `/gas/temperature/`                  | `fetch_gas_temperature`      |
-| GPS Position                                            | `/gps/position/`                     | `fetch_gps_position`         |
-| GPS Baseline                                            | `/gps/baseline/`                     | `fetch_gps_baseline`         |
-| Lava Domes (`since v0.13.0`)                            | `/lava-domes/`                       | `fetch_lava_domes`           |
-| Meteorology                                             | `/meteorology/`                      | `fetch_meteorology`          |
-| Pasarbubar Rainfall                                     | `/meteorology/rainfall/`             | `fetch_rainfall`             |
-| Pasarbubar Wind Rose                                    | `/meteorology/windrose/`             | `fetch_windrose`             |
-| Rockfall-AwanPanas Distance (`since v0.13.0`)           | `/rfap-distance/`                    | `fetch_rfap_distance`        |
-| Rockfall-AwanPanas Distance Direction (`since v0.14.0`) | `/rfap-distdir/`                     | `fetch_rfap_distdir`         |
-| Rockfall-AwanPanas Rose (`since v0.14.0`)               | `/rfap-rose/`                        | `fetch_rfap_rose`            |
-| Rockfall-AwanPanas Type (`since v0.14.0`)               | `/rfap-type/`                        | `fetch_rfap_type`            |
-| RSAM Seismic                                            | `/rsam/seismic/{station}/`           | `fetch_rsam_seismic`         |
-| RSAM Seismic Band                                       | `/rsam/seismic/{station}/{band}/`    | `fetch_rsam_seismic_band`    |
-| RSAM Infrasound                                         | `/rsam/infrasound/{station}/`        | `fetch_rsam_infrasound`      |
-| RSAM Infrasound Band                                    | `/rsam/infrasound/{station}/{band}/` | `fetch_rsam_infrasound_band` |
-| Thermal (`deprecated since v0.10.0`)                    | `/thermal/`                          | `fetch_thermal`              |
-| Thermal v2                                              | `/thermal2/`                         | `fetch_thermal2`             |
-| Tiltmeter Platform                                      | `/tiltmeter/{station}/`              | `fetch_tiltmeter`            |
-| Tiltmeter Platform Raw                                  | `/tiltmeter/raw/{station}/`          | `fetch_tiltmeter_raw`        |
-| Tiltmeter Borehole                                      | `/tiltborehole/{station}/`           | `fetch_tiltborehole`         |
-| Tiltmeter TLR                                           | `/tiltmeter/tlr/{station}/`          | `fetch_tiltmeter_tlr`        |
-| Topography Data                                         | `/topo/`                             | `fetch_topo`                 |
-| Topography Profile                                      | `/topo/profile/`                     | `fetch_topo_profile`         |
-| Seismicity                                              | `/seismicity`                        | `fetch_seismicity`           |
-| Seismicity Archive                                      | `/seismicity/archive/`               | `fetch_seismicity_archive`   |
-| Seismicity Cluster                                      | `/seismicity/cluster/`               | `fetch_seismicity_cluster`   |
-| Seismic Bulletin                                        | `/bulletin/`                         | `fetch_bulletin`             |
-| Seismic Energy                                          | `/energy/`                           | `fetch_energy`               |
-| Seismic Magnitude                                       | `/magnitude/`                        | `fetch_magnitude`            |
-| EDM Slope Correction                                    | `/slope/`                            | `fetch_slope`                |
-| EDM Slope Correction Detail                             | `/slope/{pk}/`                       | `slope`                      |
-| Create EDM Slope Correction                             | `/slope/`                            | `create_slope`               |
-| Replace EDM Slope Correction                            | `/slope/{pk}/`                       | `replace_slope`              |
-| Update EDM Slope Correction                             | `/slope/{pk}/`                       | `update_slope`               |
-| Search EDM Slope Correction                             | `/slope/`                            | `search_slope`               |
-| User Profile Info                                       | `/users/`                            | `fetch_users`                |
-| User Detail                                             | `/users/{pk}/`                       | `user`                       |
-| Search User                                             | `/users/`                            | `search_users`               |
+|                                   API Name                                   |               URL Path               |      Python Method Name      |
+| ---------------------------------------------------------------------------- | ------------------------------------ | ---------------------------- |
+| Cluster Dictionary                                                           | `/cluster/dict/`                     | `fetch_cluster_dict`         |
+| Cluster Seismicity Group                                                     | `/cluster/seisgroup/`                | `fetch_cluster_seisgroup`    |
+| DOAS (`deprecated since v0.10.0`)                                            | `/doas/`                             | `fetch_doas`                 |
+| DOAS v2                                                                      | `/doas2/{station}/`                  | `fetch_doas2`                |
+| EDM                                                                          | `/edm/`                              | `fetch_edm`                  |
+| EDM CSD and Rate                                                             | `/edm/csdr/`                         | `fetch_csdr`                 |
+| Equivalent Energy (`since v0.12.0`)                                          | `/equivalent-energy/`                | `fetch_equivalent_energy`    |
+| Gas Emission                                                                 | `/gas/emission/`                     | `fetch_gas_emission`         |
+| Gas Temperature                                                              | `/gas/temperature/`                  | `fetch_gas_temperature`      |
+| GPS Position                                                                 | `/gps/position/`                     | `fetch_gps_position`         |
+| GPS Baseline                                                                 | `/gps/baseline/`                     | `fetch_gps_baseline`         |
+| Lava Domes (`since v0.13.0`)                                                 | `/lava-domes/`                       | `fetch_lava_domes`           |
+| Magnetic Imogiri (`since v0.15.0`)                                           | `/magnetic/imogiri/`                 | `fetch_magnetic_imogiri`     |
+| Meteorology                                                                  | `/meteorology/`                      | `fetch_meteorology`          |
+| Pasarbubar Rainfall                                                          | `/meteorology/rainfall/`             | `fetch_rainfall`             |
+| Pasarbubar Wind Rose                                                         | `/meteorology/windrose/`             | `fetch_windrose`             |
+| Rockfall-AwanPanas Distance (`since v0.13.0`)                                | `/rfap-distance/`                    | `fetch_rfap_distance`        |
+| Rockfall-AwanPanas Distance Direction (`since v0.14.0`)                      | `/rfap-distdir/`                     | `fetch_rfap_distdir`         |
+| Rockfall-AwanPanas Rose (`since v0.14.0`)                                    | `/rfap-rose/`                        | `fetch_rfap_rose`            |
+| Rockfall-AwanPanas Type (`since v0.14.0`)                                    | `/rfap-type/`                        | `fetch_rfap_type`            |
+| RSAM Seismic                                                                 | `/rsam/seismic/{station}/`           | `fetch_rsam_seismic`         |
+| RSAM Seismic Band                                                            | `/rsam/seismic/{station}/{band}/`    | `fetch_rsam_seismic_band`    |
+| RSAM Infrasound                                                              | `/rsam/infrasound/{station}/`        | `fetch_rsam_infrasound`      |
+| RSAM Infrasound Band                                                         | `/rsam/infrasound/{station}/{band}/` | `fetch_rsam_infrasound_band` |
+| Thermal (`deprecated since v0.10.0`)                                         | `/thermal/`                          | `fetch_thermal`              |
+| Thermal v2                                                                   | `/thermal2/`                         | `fetch_thermal2`             |
+| Tiltmeter Platform                                                           | `/tiltmeter/{station}/`              | `fetch_tiltmeter`            |
+| Tiltmeter Platform Raw                                                       | `/tiltmeter/raw/{station}/`          | `fetch_tiltmeter_raw`        |
+| Tiltmeter Borehole                                                           | `/tiltborehole/{station}/`           | `fetch_tiltborehole`         |
+| Tiltmeter TLR                                                                | `/tiltmeter/tlr/{station}/`          | `fetch_tiltmeter_tlr`        |
+| Topography Data                                                              | `/topo/`                             | `fetch_topo`                 |
+| Topography Profile                                                           | `/topo/profile/`                     | `fetch_topo_profile`         |
+| Seismicity                                                                   | `/seismicity`                        | `fetch_seismicity`           |
+| Seismicity Archive                                                           | `/seismicity/archive/`               | `fetch_seismicity_archive`   |
+| Seismicity Cluster                                                           | `/seismicity/cluster/`               | `fetch_seismicity_cluster`   |
+| Seismic Bulletin                                                             | `/bulletin/`                         | `fetch_bulletin`             |
+| Seismic Energy                                                               | `/energy/`                           | `fetch_energy`               |
+| Seismic Magnitude                                                            | `/magnitude/`                        | `fetch_magnitude`            |
+| EDM Slope Correction                                                         | `/slope/`                            | `fetch_slope`                |
+| EDM Slope Correction Detail                                                  | `/slope/{pk}/`                       | `slope`                      |
+| Create EDM Slope Correction                                                  | `/slope/`                            | `create_slope`               |
+| Replace EDM Slope Correction                                                 | `/slope/{pk}/`                       | `replace_slope`              |
+| Update EDM Slope Correction                                                  | `/slope/{pk}/`                       | `update_slope`               |
+| Search EDM Slope Correction                                                  | `/slope/`                            | `search_slope`               |
+| User Profile Info (`deprecated since v0.15.0`, `will be removed in v0.16.0`) | `/users/`                            | `fetch_users`                |
+| User Detail (`deprecated since v0.15.0`, `will be removed in v0.16.0`)       | `/users/{pk}/`                       | `user`                       |
+| Search User (`deprecated since v0.15.0`, `will be removed in v0.16.0`)       | `/users/`                            | `search_users`               |
 
 For more information about BMA, see [the BMA
 documentation](https://bma.cendana15.com/docs/).
