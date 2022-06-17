@@ -1,4 +1,4 @@
-autopep8
+black
 coverage
 httplib2
 pylint
