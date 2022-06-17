@@ -1,3 +1,4 @@
+from pydoc import doc
 from .bind import bind_method
 from .deprecations import deprecated
 from .encoder import ParameterEncoder
@@ -194,16 +195,38 @@ class MonitoringAPI(OAuth2API):
         doc="Search for EDM slope distance correction.",
     )
 
-    fetch_users = bind_method(path="users/", doc="Fetch user data.")
+    fetch_users = deprecated(
+        "0.15.0",
+        "fetch_users method is deprecated and will be removed in the version 0.16.0. "
+        "Do not use this method anymore. "
+        "See more information at: "
+        "https://bma.cendana15.com/docs/apis/users/index.html",
+    )(bind_method(path="users/", doc="Fetch user data."))
 
-    user = bind_method(
-        path="users/{pk}/",
-        accepts_parameters=["pk"],
-        doc="Get info for certain user ID.",
+    user = deprecated(
+        "0.15.0",
+        "user method is deprecated and will be removed in the version 0.16.0. "
+        "Do not use this method anymore. "
+        "See more information at: "
+        "https://bma.cendana15.com/docs/apis/users/index.html",
+    )(
+        bind_method(
+            path="users/{pk}/",
+            accepts_parameters=["pk"],
+            doc="Get info for certain user ID.",
+        )
     )
 
-    search_users = bind_method(
-        path="users/", required_parameters=["search"], doc="Search for users."
+    search_users = deprecated(
+        "0.15.0",
+        "search_users method is deprecated and will be removed in the version 0.16.0. "
+        "Do not use this method anymore. "
+        "See more information at: "
+        "https://bma.cendana15.com/docs/apis/users/index.html",
+    )(
+        bind_method(
+            path="users/", required_parameters=["search"], doc="Search for users."
+        )
     )
 
     fetch_meteorology = bind_method(path="meteorology/", doc="Fetch meteorology data.")
@@ -281,4 +304,11 @@ class MonitoringAPI(OAuth2API):
         doc="Fetch Rockfall-AwanPanas (RF-AP) type.",
         since_version="0.14.0",
         requires_bma_version="1.9.0",
+    )
+
+    fetch_magnetic_imogiri = bind_method(
+        path="magnetic/imogiri/",
+        doc="Fetch base magnetic data from Imogiri station.",
+        since_version="0.15.0",
+        requires_bma_version="1.10.0",
     )
