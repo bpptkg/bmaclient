@@ -20,7 +20,7 @@ class ParameterEncoder(object):
     Extensible query parameters encoder.
 
     This class encodes the query parameter value to bytes string. Default
-    behaviour is explained as follows:
+    behavior is explained as follows:
 
     - list, tuple
 
@@ -44,16 +44,14 @@ class ParameterEncoder(object):
 
     int or float value will be encoded to bytes string. For example: ::
 
-        12 -> b'12'
-        14.56 -> b'14.56'
+        12 -> b'12' 14.56 -> b'14.56'
 
     - bool
 
     Boolean type will be encoded to bytes string with lower case value. For
     example: ::
 
-        True -> b'true'
-        False -> b'false'
+        True -> b'true' False -> b'false'
 
     - None
 
