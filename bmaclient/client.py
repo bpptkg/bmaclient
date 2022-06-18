@@ -1,4 +1,3 @@
-from pydoc import doc
 from .bind import bind_method
 from .deprecations import deprecated
 from .encoder import ParameterEncoder
