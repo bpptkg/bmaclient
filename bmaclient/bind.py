@@ -63,7 +63,7 @@ class MonitoringAPIMethod(object):
                 value = quote(self.parameters[name])
             except KeyError:
                 raise Exception(
-                    "No parameter value found " "for path variable: {}".format(name)
+                    "No parameter value found for path variable: {}".format(name)
                 )
             del self.parameters[name]
 

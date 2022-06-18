@@ -134,7 +134,7 @@ class ParameterEncoder(object):
         ``TypeError``).
         """
         raise TypeError(
-            "Object of type {} " "is not serializable.".format(o.__class__.__name__)
+            "Object of type {} is not serializable.".format(o.__class__.__name__)
         )
 
     def encode(self, o):
